@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 // import { FaHeart, FaUser, FaSearch } from "react-icons/fa";
 import styles from "./ConstHeader.module.css";
-import Logo from "../assets/trademe-logo-no-tagline.png"
-import WatchlistIcon from "../assets/Group.png"
-import FavouritesIcon from "../assets/line-md_heart.png"
-import StartListingIcon from "../assets/prime_pencil.png"
-import MyTradeMeIcon from "../assets/lucide_circle-user-round.png"
-import SearchIcon from "../assets/searchIcon.png"
+import Logo from "../../../assets/trademe-logo-no-tagline.png"
+import WatchlistIcon from "../../../assets/Group.png"
+import FavouritesIcon from "../../../assets/line-md_heart.png"
+import StartListingIcon from "../../../assets/prime_pencil.png"
+import MyTradeMeIcon from "../../../assets/lucide_circle-user-round.png"
+import SearchIcon from "../../../assets/searchIcon.png"
 
 export default function ConstHeader() {
   return (
