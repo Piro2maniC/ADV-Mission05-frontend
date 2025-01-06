@@ -3,7 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Items from './components/Items';
 import styles from './components/styles.module.css';
-import Header from './components/sharedComponents/searchBarHeader/ConstHeader.jsx';
+import Header from './components/pages/landing/LandingHeader.jsx';
 import Landing from './components/pages/landing/Landing.jsx'
 
 const App = () => {
