@@ -105,9 +105,14 @@ background-color: white;
     padding-left: 5px;
 }
 
-.learnMore .tellUs{
+.learnMore{
 color: #3E75CB;
 }
+
+.tellUs
+{
+    color: #3E75CB;
+    }
 
 .upgrading{
     color: #8A8685
