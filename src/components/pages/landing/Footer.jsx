@@ -1,14 +1,20 @@
 import React from 'react';
 import styles from './Footer.module.css';
 import Logo from "../../../assets/trademe-logo-no-tagline.png"
+import SpeechBubble from "../../../assets/speechBubble.png"
+import Information from "../../../assets/information.png"
+import FacebookLogo from "../../../assets/greyFacebook.png"
+import TwitterLogo from "../../../assets/greyTwitter.png"
 
 const Footer = () => {
     return (
         <div className={styles.footer}>
             <div className={styles.topSection}>
-                <span>We are upgrading some of our systems</span>
-                <span>Learn more</span>
-                <span>Tell us what you think</span>
+                <span className={styles.upgrading}>We are upgrading some of our systems</span><img className={styles.information} src={Information} alt="Information"></img>
+                <span className={styles.learnMore}>
+                    Learn more</span><img className={styles.speechBubble} src={SpeechBubble} alt="Speech Bubble"></img>
+                <span className={styles.tellUs}>
+                    Tell us what you think</span>
             </div>
             <div className={styles.middleSection}>
                 <img src={Logo} alt="Trade Me Logo" />
@@ -77,8 +83,14 @@ const Footer = () => {
             </div>
             <div className={styles.copyrightSection}>
                 <p>&copy; 2024 Trade Me Limited</p>
-                <p>Desktop site About Us Careers Advertise Privacy policy Terms & conditions Contact Us</p>
-                <p>Social Media Icons</p>
+                <p className={styles.copyrightText}>Desktop site </p>
+                <p className={styles.copyrightText}>About Us </p>
+                <p className={styles.copyrightText}>Careers </p>
+                <p className={styles.copyrightText}>Advertise </p>
+                <p className={styles.copyrightText}>Privacy policy </p>
+                <p className={styles.copyrightText}>Terms & conditions </p>
+                <p className={styles.copyrightText}>Contact Us</p>
+                <img className={styles.socialIcons} src={FacebookLogo} alt="Facebook Logo"></img><img className={styles.socialIcons} src={TwitterLogo} alt="Twitter Logo"></img>
             </div>
         </div>
     );

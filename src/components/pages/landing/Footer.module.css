@@ -1,32 +1,57 @@
 .footer {
-    background-color: #f7f5f4;
     text-align: center;
-    padding: 20px;
+    /* padding: 20px; */
+background-color: white;
     width: 100%;
     position: relative;
     font-family: Inter;
+    max-width: 1585px;
 }
 
 .topSection {
     display: flex;
-    justify-content: space-between;
+    flex-direction: flex-start;
+    /* padding: 20px; */
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 20px;
+    padding-bottom: 20px;    gap: 40px;
     padding-bottom: 10px;
     border-bottom: 2px solid #e0e0e0;
+    font-size: 14px;
 }
 
 .middleSection {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
+    /* padding: 20px; */
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #9D9996;
     border-bottom: 2px solid #e0e0e0;
+}
+
+.middleSection img{
+    width: 160px;
+}
+
+.middleSection span {
+    font-size: 12px;
 }
 
 .bottomSection {
     display: flex;
     justify-content: space-around;
-    padding: 20px 0;
-    border-bottom: 2px solid #e0e0e0;
+    /* padding: 20px; */
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 20px;
+    padding-bottom: 20px;    border-bottom: 2px solid #e0e0e0;
+    color: #9D9996;
+
 }
 
 .bottomSection div {
@@ -35,11 +60,14 @@
 
 .bottomSection h4 {
     margin-bottom: 10px;
+    font-size: 14px;
 }
 
 .bottomSection ul {
     list-style-type: none;
     padding: 0;
+    font-size: 12px;
+
 }
 
 .bottomSection li {
@@ -47,7 +75,44 @@
 }
 
 .copyrightSection {
-    padding: 10px 0;
-    font-size: 12px;
-    color: #888;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 12px;
+  color: #888;
+  background-color: #f7f5f4;
+}
+
+.copyrightText {
+  margin-right: 20px;
+}
+
+.socialIcons {
+  margin-left: 20px;
+}
+
+.speechBubble{
+    height: 13.58px
+}
+
+.information{
+    height:15.44px;
+    padding-left: 5px;
+}
+
+.learnMore .tellUs{
+color: #3E75CB;
+}
+
+.upgrading{
+    color: #8A8685
+}
+
+.socialIcons{
+    height: 17px;
 }
