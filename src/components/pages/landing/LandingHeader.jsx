@@ -9,11 +9,11 @@ import StartListingIcon from "../../../assets/prime_pencil.png"
 import MyTradeMeIcon from "../../../assets/lucide_circle-user-round.png"
 import SearchIcon from "../../../assets/searchIcon.png"
 
-export default function ConstHeader() {
+export default function LandingHeader() {
   return (
-    <header className={styles.headerSearchBar}>
-    <div className={styles.topNav}>
-    <div className={styles.headerNavLinks}>
+    <header className={styles.headerSearchBarLanding}>
+    <div className={styles.topNavLanding}>
+    <div className={styles.headerNavLinksLanding}>
           <Link to="/">Trade Me</Link>
           <Link to="/insurance">Trade Me Insurance</Link>
           <Link to="/holiday">Holiday Houses</Link>
@@ -21,44 +21,44 @@ export default function ConstHeader() {
           <Link to="/motorweb">MotorWeb</Link>
           <Link to="/homes">homes.co.nz</Link>
         </div>
-        <div className={styles.authLinks}>
+        <div className={styles.authLinksLanding}>
     <Link to="/register">Register</Link>
     <Link to="/login">Log in</Link>
   </div>
 </div>
 
-<div className={styles.mainNav}>
-  <div className={styles.logo}>
+<div className={styles.mainNavLanding}>
+  <div className={styles.logoLanding}>
           <Link to="/">
             <img src={Logo} alt="Trade Me" />
           </Link>
         </div>
         
-        <div className={styles.searchSection}>
-        <div className={styles.browseDropdown}>
+        <div className={styles.searchSectionLanding}>
+        <div className={styles.browseDropdownLanding}>
             Browse
-            <span className={styles.dropdownArrow}>▼</span>
+            <span className={styles.dropdownArrowLanding}>▼</span>
 </div>
 
         </div>
         
-        <div className={styles.userActions}>
-        <Link to="/watchlist" className={styles.actionLink}>
+        <div className={styles.userActionsLanding}>
+        <Link to="/watchlist" className={styles.actionLinkLanding}>
             <span className={styles.icon}>
             <img src={WatchlistIcon}></img></span>
           Watchlist
           </Link>
-          <Link to="/favourites" className={styles.actionLink}>
+          <Link to="/favourites" className={styles.actionLinkLanding}>
           <span className={styles.icon}>
           <img src={FavouritesIcon}></img></span>
           Favourites
 </Link>
-<Link to="/listing/new" className={styles.actionLink}>
-<span className={styles.icon}>
+<Link to="/listing/new" className={styles.actionLinkLanding}>
+<span className={styles.iconLanding}>
 <img src={StartListingIcon}></img></span>
  Start a listing
 </Link>
-<Link to="/my-trademe" className={styles.actionLink}>
+<Link to="/my-trademe" className={styles.actionLinkLanding}>
 My Trade Me <span className={styles.icon}><img src={MyTradeMeIcon}></img></span>
           </Link>
         </div>
