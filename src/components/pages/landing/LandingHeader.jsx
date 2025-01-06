@@ -38,13 +38,13 @@ export default function LandingHeader() {
             Browse
             <span className={styles.dropdownArrow}>▼</span>
 </div>
-<div className={styles.searchInputContainer}>
+{/* <div className={styles.searchInputContainer}>
 <img className={styles.searchIcon} src={SearchIcon}></img>
 
   <input type="text" placeholder="Search" />
   <button className={styles.searchButton}>
             </button>
-          </div>
+          </div> */}
         </div>
         
         <div className={styles.userActions}>

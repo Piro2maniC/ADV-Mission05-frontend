@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-around;
     padding: 20px;
+    font-family: Inter;
 }
 
 .tile {
