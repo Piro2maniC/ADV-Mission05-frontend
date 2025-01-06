@@ -1,11 +1,11 @@
 import React from 'react'
 
-function compare() {
+function Compare() {
   return (
     <div>
-      
+     compare screen 
     </div>
   )
 }
 
-export default compare
+export default Compare

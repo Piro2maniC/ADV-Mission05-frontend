@@ -1,0 +1,26 @@
+.layoutGrid {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+      "header header header"
+      "content content content"
+      "footer footer footer";
+}
+
+.header {
+    grid-area: header;
+
+
+}
+
+.content {
+    grid-area: content;
+   
+}
+
+.footer {
+    grid-area: footer;
+
+}
