@@ -5,12 +5,51 @@
     font-family: Inter;
 }
 
-.tile {
-    width: 150px;
-    height: 150px;
-    background-color: #ccc;
-    margin: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.tileOne {
+    width: 352px;
+    height: 232px;
+    flex-shrink: 0;
+    background-color:#FFFFFF;
+    border-radius: 8px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+}
+
+.tileOne h1 {
+    color: #5554D4;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding-top: 20px;
+    padding-left: 18px;
+}
+
+.tileOne p {
+    color: #5554D4;
+font-family: Inter;
+font-size: 24px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+padding-left: 18px;
+width: 149px
+
+}
+
+.tileOne button {
+    width: 78px;
+height: 29px;
+flex-shrink: 0;
+border-radius: 2px;
+background: #5554D4;
+outline: none;
+/* color: #FFF;
+font-family: Inter;
+font-size: 12px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+outline: none; */
 }
