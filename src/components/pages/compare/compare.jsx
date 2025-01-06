@@ -3,7 +3,7 @@ import React from 'react'
 function Compare() {
   return (
     <div>
-      This will be the compare screen
+     compare screen 
     </div>
   )
 }
