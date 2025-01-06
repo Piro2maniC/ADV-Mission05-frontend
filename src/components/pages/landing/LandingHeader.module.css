@@ -1,0 +1,206 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+.headerSearchBarLanding {
+  width: 100%;
+  background-color: white;
+  font-family: Inter;
+  
+}
+
+.topNavLanding {
+  background-color: #f7f5f4;
+  padding-bottom: 19px;
+  padding-top: 0px;
+  padding-left: 50px ;
+  padding-right: 140px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.headerNavLinksLanding{
+  gap: 50px;
+  padding-left: 150px
+}
+
+.authLinksLanding {
+  gap: 40px
+}
+
+.headerNavLinksLanding, .authLinksLanding {
+  display: flex;
+  /* gap: 25px; */
+  color: #9D9996
+}
+
+.headerNavLinksLanding a, .authLinksLanding a {
+  color: #9D9996;
+  text-decoration: none;
+  font-family: inherit;
+}
+
+.headerNavLinksLanding a:hover, .authLinksLanding a:hover {
+  color: #0066cc;
+}
+
+.mainNavLanding {
+  padding-top: 10px;
+  padding-left: 50px ;
+  padding-right: 50px;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.logoLanding img {
+  height: 23.96px;
+}
+
+.searchSectionLanding {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  max-width: 600px;
+  margin-right: auto;
+  color: #8A8685;
+
+}
+
+.browseDropdownLanding {
+  padding: 8px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  position: relative;
+  font-family: inherit;
+  /* needs to be inter */
+  font-size: 14px;
+  color: #8A8685;
+
+}
+
+.browseDropdown::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 20px;
+  background-color: #ddd;
+}
+
+.dropdownArrowLanding {
+  font-size: 10px;
+  color: #666;
+}
+/* 
+.searchIcon{
+  height: 15px;
+  padding-left: 20px;
+} */
+
+/* .searchInputContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.searchInputContainer input {
+  flex: 1;
+  padding: 8px 16px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  font-family: inherit;
+} */
+
+/* .searchButton {
+  padding: 8px 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  font-family: inherit;
+}
+
+.searchButton:hover {
+  color: #0066cc;
+} */
+
+.userActionsLanding {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-left: auto;
+}
+
+.actionLinkLanding {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.actionLinkLanding img {
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.actionLinkLanding:last-child {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.actionLinkLanding:last-child .iconLanding {
+  display: flex;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.actionLinkLanding:hover {
+  color: #0066cc;
+}
+
+.iconLanding {
+  font-size: 16px;
+}
+
+@media (max-width: 1024px) {
+  .topNavLanding {
+    display: none;
+  }
+  
+  .userActionsLanding {
+    gap: 12px;
+  }
+  
+  .actionLinkLanding span:not(.icon) {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .browseDropdownLanding {
+    display: none;
+  }
+  
+  .userActionsLanding {
+    gap: 8px;
+  }
+}
