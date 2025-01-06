@@ -6,7 +6,10 @@
 
 .topNav {
   background-color: #f7f5f4;
-  padding: 10px 120px;
+  padding-bottom: 19px;
+  padding-top: 0px;
+  padding-left: 50px ;
+  padding-right: 140px;
   display: flex;
   justify-content: space-between;
   font-size: 14px;
@@ -38,9 +41,10 @@
 }
 
 .mainNav {
-  padding-top: 16px;
+  padding-top: 10px;
   padding-left: 50px ;
   padding-right: 50px;
+  padding-bottom: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -145,6 +149,7 @@ text-decoration-skip-ink: none; */
 .actionLink {
   display: flex;
   align-items: center;
+
   gap: 6px;
   color: #333;
   text-decoration: none;

@@ -50,15 +50,18 @@ export default function ConstHeader() {
         
         <div className={styles.userActions}>
         <Link to="/watchlist" className={styles.actionLink}>
-            <span className={styles.icon}><img src={WatchlistIcon}></img></span>
-            Watchlist
+            <span className={styles.icon}>
+            <img src={WatchlistIcon}></img></span>
+          Watchlist
           </Link>
           <Link to="/favourites" className={styles.actionLink}>
- <span className={styles.icon}><img src={FavouritesIcon}></img></span>
- Favourites
+          <span className={styles.icon}>
+          <img src={FavouritesIcon}></img></span>
+          Favourites
 </Link>
 <Link to="/listing/new" className={styles.actionLink}>
-<span className={styles.icon}><img src={StartListingIcon}></img></span>
+<span className={styles.icon}>
+<img src={StartListingIcon}></img></span>
  Start a listing
 </Link>
 <Link to="/my-trademe" className={styles.actionLink}>

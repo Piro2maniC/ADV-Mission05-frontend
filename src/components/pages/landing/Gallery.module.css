@@ -1,0 +1,15 @@
+.tiles {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.tile {
+    width: 150px;
+    height: 150px;
+    background-color: #ccc;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
