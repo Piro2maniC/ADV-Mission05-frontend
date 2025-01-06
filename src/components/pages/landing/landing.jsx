@@ -1,11 +1,11 @@
 import React from 'react'
 
-function landing() {
+function Landing() {
   return (
     <div>
-      
+      This will be Landing Content
     </div>
   )
 }
 
-export default landing
+export default Landing
