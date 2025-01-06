@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import styles from "./Landing.module.css";
-import Gallery from "./Gallery.jsx";
+import Gallery from "./TopGallery.jsx";
 import Footer from "./Footer.jsx";
 // import Header from "./Header.jsx";
 
@@ -47,7 +47,6 @@ const Landing = () => {
             Search
           </button>
         </div>
-
         <nav className={styles.categoryNav}>
           <a href="#" className={`${styles.categoryLink} ${styles.marketplace}`}>Marketplace</a>
           <a href="#" className={`${styles.categoryLink} ${styles.jobs}`}>Jobs</a>
@@ -79,6 +78,7 @@ const Landing = () => {
         )}
       </div>
       <Gallery></Gallery>
+    
       <Footer></Footer>
     </div>
   );

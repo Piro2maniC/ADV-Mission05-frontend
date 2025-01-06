@@ -10,12 +10,15 @@ const Footer = () => {
     return (
         <div className={styles.footer}>
             <div className={styles.topSection}>
-                <span className={styles.upgrading}>We are upgrading some of our systems</span><img className={styles.information} src={Information} alt="Information"></img>
+                <span className={styles.upgrading}>
+                    We are upgrading some of our systems
+                    </span><img className={styles.information} src={Information} alt="Information"></img>
                 <span className={styles.learnMore}>
                     Learn more</span><img className={styles.speechBubble} src={SpeechBubble} alt="Speech Bubble"></img>
                 <span className={styles.tellUs}>
                     Tell us what you think</span>
             </div>
+            <div className={styles.yellowDivider}></div>
             <div className={styles.middleSection}>
                 <img src={Logo} alt="Trade Me Logo" />
                 <span>List an item</span>
@@ -25,9 +28,10 @@ const Footer = () => {
                 <span>Register</span>
                 <span>Log in</span>
             </div>
+            <div className={styles.middleSectionDivider}></div>
             <div className={styles.bottomSection}>
                 <div>
-                    <h4>Marketplace</h4>
+                    <h4 className={styles.marketplace}>Marketplace</h4>
                     <ul>
                         <li>Latest deals</li>
                         <li>Stores</li>
@@ -36,7 +40,7 @@ const Footer = () => {
                     </ul>
                 </div>
                 <div>
-                    <h4>Jobs</h4>
+                    <h4 className={styles.jobs}>Jobs</h4>
                     <ul>
                         <li>Browse categories</li>
                         <li>Careers advice</li>
@@ -45,7 +49,7 @@ const Footer = () => {
                     </ul>
                 </div>
                 <div>
-                    <h4>Motors</h4>
+                    <h4 className={styles.motors}>Motors</h4>
                     <ul>
                         <li>Browse all cars</li>
                         <li>Other vehicles</li>
@@ -54,7 +58,7 @@ const Footer = () => {
                     </ul>
                 </div>
                 <div>
-                    <h4>Property</h4>
+                    <h4 className={styles.property}>Property</h4>
                     <ul>
                         <li>International Property</li>
                         <li>News & guides</li>
@@ -63,7 +67,7 @@ const Footer = () => {
                     </ul>
                 </div>
                 <div>
-                    <h4>Services</h4>
+                    <h4 className={styles.services}>Services</h4>
                     <ul>
                         <li>Trades</li>
                         <li>Domestic Services</li>
@@ -72,7 +76,7 @@ const Footer = () => {
                     </ul>
                 </div>
                 <div>
-                    <h4>Community</h4>
+                    <h4 className={styles.community}>Community</h4>
                     <ul>
                         <li>Help</li>
                         <li>Announcements</li>
