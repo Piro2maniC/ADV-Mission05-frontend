@@ -53,6 +53,7 @@ const Landing = () => {
     value={keyword}
     onChange={(e) => setKeyword(e.target.value)}
     onKeyPress={handleKeyPress}
+    // will pass keyword through url, then run query on davids page
   />
   <button className={styles.searchButton} onClick={handleSearch}>
     Search
@@ -67,7 +68,7 @@ const Landing = () => {
           <a href="#" className={`${styles.categoryLink} ${styles.services}`}>Services</a>
         </nav>
 
-        {results.length > 0 && (
+        {/* {results.length > 0 && (
           <div className={styles.resultsContainer}>
             <h2 className={styles.resultsTitle}>Results:</h2>
             <ul className={styles.resultsList}>
@@ -87,7 +88,7 @@ const Landing = () => {
         )}
         {hasSearched && results.length === 0 && (
           <div className={styles.noResults}>No items found</div>
-        )}
+        )} */}
       </div>
       <TopGallery></TopGallery>
       <CoolAuctions></CoolAuctions>
