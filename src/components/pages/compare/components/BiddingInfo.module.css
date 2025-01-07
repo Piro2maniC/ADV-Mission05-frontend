@@ -1,0 +1,58 @@
+.biddingContainer {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.priceInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.buyNowSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.buyNowButton,
+.cartButton,
+.bidButton {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.buyNowButton {
+  background-color: #28a745;
+  color: white;
+}
+
+.cartButton {
+  background-color: #ffc107;
+  color: black;
+}
+
+.bidSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bidInput {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.bidInput input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.bidButton {
+  background-color: #007bff;
+  color: white;
+}

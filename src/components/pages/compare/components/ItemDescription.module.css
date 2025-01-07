@@ -1,0 +1,9 @@
+.descriptionContainer {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.description {
+  margin-top: 0.5rem;
+  line-height: 1.6;
+}

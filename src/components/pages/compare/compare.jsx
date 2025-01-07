@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import styles from "./compare.module.css";
+import ListingHeader from "./components/ListingHeader";
+import BiddingInfo from "./components/BiddingInfo";
+import ItemDescription from "./components/ItemDescription";
+import SellerInfo from "./components/SellerInfo";
 
 const ComparePage = () => {
   const [listing1, setListing1] = useState(null);
@@ -11,20 +15,14 @@ const ComparePage = () => {
   const title1 = searchParams.get("title1");
   const title2 = searchParams.get("title2");
 
-  const fetchListings = async () => {
+  const fetchListings = useCallback(async () => {
     try {
       if (!title1 || !title2) {
         console.error("Missing listing titles");
         return;
       }
 
-      const baseURL = "http://localhost:5001"; // Changed from 5000 to 5001
-      console.log(
-        "Fetching from URLs:",
-        `${baseURL}/find?search=${encodeURIComponent(title1)}`,
-        `${baseURL}/find?search=${encodeURIComponent(title2)}`
-      );
-
+      const baseURL = "http://localhost:5001";
       const [response1, response2] = await Promise.all([
         axios.get(`${baseURL}/find?search=${encodeURIComponent(title1)}`),
         axios.get(`${baseURL}/find?search=${encodeURIComponent(title2)}`),
@@ -35,45 +33,37 @@ const ComparePage = () => {
     } catch (error) {
       console.error("Error fetching listings:", error);
     }
-  };
+  }, [title1, title2]);
 
   useEffect(() => {
-    fetchListings();
-  }, [title1, title2]);
+    if (title1 && title2) {
+      fetchListings();
+    }
+  }, [fetchListings]);
 
   const renderListingCard = (listing) => {
     if (!listing) return <div>Loading...</div>;
 
     return (
       <div className={styles.card}>
-        <div className={styles.cardBody}>
-          <h2 className={styles.cardTitle}>{listing.title}</h2>
-          <div className={styles.cardText}>
-            <strong>Description:</strong> {listing.description}
-            <br />
-            <strong>Start Price:</strong> ${listing.start_price}
-            <br />
-            <strong>Reserve Price:</strong> ${listing.reserve_price}
-          </div>
-          <Link to={`/search`} className={styles.button}>
-            View All Listings
-          </Link>
-        </div>
+        <ListingHeader listing={listing} />
+        <BiddingInfo listing={listing} />
+        <ItemDescription listing={listing} />
+        <SellerInfo listing={listing} />
       </div>
     );
   };
 
   return (
     <div className={styles.container}>
-      <div className={styles.headerSection}>
-        <Link to="/search" className={styles.backButton}>
-          Back to Search
-        </Link>
-        <h1 className={styles.title}>Compare Listings</h1>
-      </div>
-      <div className={styles.row}>
-        {renderListingCard(listing1)}
-        {renderListingCard(listing2)}
+      <h1 className={styles.title}>Compare Listings</h1>
+      <div className={styles.compareContainer}>
+        <div className={styles.listingColumn}>
+          {renderListingCard(listing1)}
+        </div>
+        <div className={styles.listingColumn}>
+          {renderListingCard(listing2)}
+        </div>
       </div>
     </div>
   );
