@@ -1,0 +1,89 @@
+
+.card {
+    position: relative;
+    width: 256px;
+    height: 427px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);  overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+  }
+  
+  .watchlistIcon {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    z-index: 1;
+  }
+  
+  .picture {
+    width: 255px;
+    height: 292px;
+    flex-shrink: 0;
+    border-radius: 8px 8px 0px 0px;
+    background: #D9D9D9;
+    outline: none;
+  }
+  
+  .details {
+    padding: 16px;
+    height: 135px;
+  }
+  
+  .title {
+    color: #000;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  
+  .locationAndTime{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .location{
+    color: #9D9996;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  
+  
+  .closingTime{
+    color: #C64C3D;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  }
+  
+  .reserve{
+    color: #9D9996;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  }
+  
+  .price {
+    color: #000;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  
+  
