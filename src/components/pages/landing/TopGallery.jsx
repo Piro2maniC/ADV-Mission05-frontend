@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./TopGallery.module.css";
 
-const Gallery = () => {
+const TopGallery = () => {
   return (
     <div className={styles.tiles}>
       <div className={styles.tileOne}>
@@ -9,10 +9,18 @@ const Gallery = () => {
           <p>Shop last minute Xmas gifts!</p>
           <button>Shop now</button>
         </div>
-      <div className={styles.tile2}>Tile 2</div>
-      <div className={styles.tile3}>Tile 3</div>
+      <div className={styles.tileTwo}>
+      <h1>Property</h1>
+          <p>You choose, we celebrate</p>
+          <button>Nominate now</button>
+      </div>
+      <div className={styles.tileThree}>
+      <h1>Properties</h1>
+          <p>Selling data is here!</p>
+          <button>Search now</button>
+      </div>
     </div>
   );
 };
 
-export default Gallery;
+export default TopGallery;

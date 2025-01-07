@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import styles from "./Landing.module.css";
-import Gallery from "./TopGallery.jsx";
+import TopGallery from "./TopGallery.jsx";
+import CoolAuctions from "./CoolAuctions.jsx";
+import Trending from "./Trending.jsx";
+import Reserve from "./Reserve.jsx";
 import Footer from "./Footer.jsx";
 // import Header from "./Header.jsx";
 
@@ -77,7 +80,11 @@ const Landing = () => {
           <div className={styles.noResults}>No items found</div>
         )}
       </div>
-      <Gallery></Gallery>
+      <TopGallery></TopGallery>
+      <CoolAuctions></CoolAuctions>
+       <Trending></Trending>
+       <Reserve></Reserve>
+   
     
       <Footer></Footer>
     </div>
