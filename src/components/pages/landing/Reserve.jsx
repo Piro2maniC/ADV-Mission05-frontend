@@ -10,7 +10,9 @@ export default function Reserve() {
     const fetchItems = async () => {
       try {
         const response = await axios.get('http://localhost:5000/api/auctions');
-        setItems(response.data);
+        const shuffledItems = [...response.data].sort(() => 0.5 - Math.random());
+        const uniquerItems = [...new Set(shuffledItems.map(item => JSON.stringify(item)))].map(item => JSON.parse(item));
+        setItems(uniquerItems.slice(0, 4));
       } catch (error) {
         console.error('Error fetching auction items:', error);
       }
@@ -19,13 +21,11 @@ export default function Reserve() {
     fetchItems();
   }, []);
 
-  const displayedItems = items.slice(0, 4); // Limit to 4 items
-
   return (
     <div>
       <h1 className={styles.reserveHeading}>$1 reserve</h1>
       <div className={styles.reserve}>
-        {displayedItems.map(item => (
+        {items.map(item => (
           <Card
             key={item._id}
             picture={item.image_url}
