@@ -16,7 +16,7 @@ const TopGallery = () => {
       </div>
       <div className={styles.tileThree}>
       <h1>Properties</h1>
-          <p>Selling data is here!</p>
+          <p>Selling info is here!</p>
           <button>Search now</button>
       </div>
     </div>

@@ -9,7 +9,7 @@ export default function CoolAuctions() {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await axios.get('/api/auctions');
+        const response = await axios.get('http://localhost:5000/api/auctions');
         setItems(response.data);
       } catch (error) {
         console.error('Error fetching auction items:', error);
@@ -19,11 +19,13 @@ export default function CoolAuctions() {
     fetchItems();
   }, []);
 
+  const displayedItems = items.slice(0, 4); // Limit to 4 items
+
   return (
     <div>
       <h1 className={styles.auctionsHeading}>Cool auctions</h1>
       <div className={styles.coolAuctions}>
-        {items.map(item => (
+        {displayedItems.map(item => (
           <Card
             key={item._id}
             picture={item.image_url}

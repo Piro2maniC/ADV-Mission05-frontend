@@ -14,7 +14,7 @@ export default function Card({ picture, location, closingTime, title, price }) {
 
 
         </div>
-         <h2 className={styles.title}>{title}TITLE</h2>
+         <h2 className={styles.title}>{title}</h2>
          <p className={styles.reserve}>Reserve not met</p>
         <p className={styles.price}>${price}</p>
       </div>

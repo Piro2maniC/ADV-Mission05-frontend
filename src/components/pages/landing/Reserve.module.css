@@ -12,8 +12,11 @@
 
 .reserve{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     margin-top: 20px;
     font-family: Inter;
+    padding-left: 160px;
+    padding-right: 160px
 }
