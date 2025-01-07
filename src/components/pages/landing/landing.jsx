@@ -6,6 +6,7 @@ import CoolAuctions from "./CoolAuctions.jsx";
 import Trending from "./Trending.jsx";
 import Reserve from "./Reserve.jsx";
 import Footer from "./Footer.jsx";
+import searchIcon from "../../../assets/searchIcon.png"
 // import Header from "./Header.jsx";
 
 const Landing = () => {
@@ -38,18 +39,26 @@ const Landing = () => {
       <div className={styles.searchContainer}>
         <h1 className={styles.heading}>KIA ORA! READY TO FIND YOUR NEW?</h1>
         <div className={styles.searchBox}>
-          <input
-            type="text"
-            className={styles.searchInput}
-            placeholder="Search all of Trade Me"
-            value={keyword}
-            onChange={(e) => setKeyword(e.target.value)}
-            onKeyPress={handleKeyPress}
-          />
-          <button className={styles.searchButton} onClick={handleSearch}>
-            Search
-          </button>
-        </div>
+  <div className={styles.iconContainer}>
+    <img
+      src={searchIcon}
+      alt="Search Icon"
+      className={styles.searchIcon}
+    />
+  </div>
+  <input
+    type="text"
+    className={styles.searchInput}
+    placeholder="Search all of Trade Me"
+    value={keyword}
+    onChange={(e) => setKeyword(e.target.value)}
+    onKeyPress={handleKeyPress}
+  />
+  <button className={styles.searchButton} onClick={handleSearch}>
+    Search
+  </button>
+</div>
+
         <nav className={styles.categoryNav}>
           <a href="#" className={`${styles.categoryLink} ${styles.marketplace}`}>Marketplace</a>
           <a href="#" className={`${styles.categoryLink} ${styles.jobs}`}>Jobs</a>
