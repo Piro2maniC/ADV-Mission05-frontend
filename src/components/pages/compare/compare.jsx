@@ -12,31 +12,31 @@ const ComparePage = () => {
   const [listing2, setListing2] = useState(null);
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const title1 = searchParams.get("title1");
-  const title2 = searchParams.get("title2");
+  const id1 = searchParams.get("id1");
+  const id2 = searchParams.get("id2");
 
   const fetchListings = useCallback(async () => {
     try {
-      if (!title1 || !title2) {
-        console.error("Missing listing titles");
+      if (!id1 || !id2) {
+        console.error("Missing listing IDs");
         return;
       }
 
       const baseURL = "http://localhost:5001";
       const [response1, response2] = await Promise.all([
-        axios.get(`${baseURL}/find?search=${encodeURIComponent(title1)}`),
-        axios.get(`${baseURL}/find?search=${encodeURIComponent(title2)}`),
+        axios.get(`${baseURL}/find/${id1}`),
+        axios.get(`${baseURL}/find/${id2}`),
       ]);
 
-      if (response1.data.length > 0) setListing1(response1.data[0]);
-      if (response2.data.length > 0) setListing2(response2.data[0]);
+      setListing1(response1.data);
+      setListing2(response2.data);
     } catch (error) {
       console.error("Error fetching listings:", error);
     }
-  }, [title1, title2]);
+  }, [id1, id2]);
 
   useEffect(() => {
-    if (title1 && title2) {
+    if (id1 && id2) {
       fetchListings();
     }
   }, [fetchListings]);
