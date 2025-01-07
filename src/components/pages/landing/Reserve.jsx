@@ -12,8 +12,7 @@ export default function Reserve() {
         const response = await axios.get('http://localhost:5000/api/auctions');
         const shuffledItems = [...response.data].sort(() => 0.5 - Math.random());
         const filteredItems = shuffledItems.filter(item => item.reserve_price === 1);
-        const uniqueItems = [...new Set(filteredItems.map(item => JSON.stringify(item)))].map(item => JSON.parse(item));
-        setItems(uniqueItems.slice(0, 4));
+        setItems(filteredItems.slice(0, 4));
       } catch (error) {
         console.error('Error fetching auction items:', error);
       }
@@ -34,6 +33,7 @@ export default function Reserve() {
             closingTime={item.closing_time}
             title={item.title}
             price={item.start_price}
+            reserve_price={item.reserve_price}
           />
         ))}
       </div>

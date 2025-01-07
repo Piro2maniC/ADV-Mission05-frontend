@@ -32,7 +32,7 @@ export default function CoolAuctions() {
             location={item.location}
             closingTime={item.closing_time}
             title={item.title}
-            price={item.start_price}
+            reserve_price={item.reserve_price}
           />
         ))}
       </div>
