@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './Card.module.css';
-import WatchlistIcon from "../assets/addToWatchlist.png"
+import styles from '../../styles/Card.module.css';
+import WatchlistIcon from "../../assets/addToWatchlist.png"
 
 
 export default function Card({ picture, location, closingTime, title, price }) {
