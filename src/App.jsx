@@ -1,10 +1,10 @@
-import React from 'react';
-import { Routes, Route} from 'react-router-dom';
-import LayoutLanding from './common/Layout-Landing/LayoutLanding.jsx';
-import Landing from './components/pages/Landing/Landing.jsx';
-import Search from './components/pages/Search/Search.jsx';
-import Compare from './components/pages/Compare/Compare.jsx';
-import './App.css';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import LayoutLanding from "./common/Layout-Landing/LayoutLanding.jsx";
+import Landing from "./components/pages/landing/landing.jsx";
+import Search from "./components/pages/search/search.jsx";
+import Compare from "./components/pages/compare/compare.jsx";
+import "./App.css";
 
 function App() {
   return (
