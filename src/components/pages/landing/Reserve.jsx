@@ -1,12 +1,16 @@
 import React from 'react'
 import styles from './Reserve.module.css'
+import Card from './Card'
 
-function Reserve() {
+export default function Reserver() {
   return (
-    <div>
-      
+    <div>      
+      <h1 className={styles.reserveHeading}>$1 reserve</h1>
+
+    <div className={styles.reserve}>
+<Card></Card>
+
+    </div>
     </div>
   )
 }
-
-export default Reserve

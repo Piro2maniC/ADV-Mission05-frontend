@@ -84,7 +84,7 @@ const Landing = () => {
       <CoolAuctions></CoolAuctions>
        <Trending></Trending>
        <Reserve></Reserve>
-   
+   <br></br>
     
       <Footer></Footer>
     </div>
