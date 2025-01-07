@@ -17,7 +17,7 @@ const Landing = () => {
     setHasSearched(true);
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/search?keyword=${keyword}`
+        `http://localhost:5000/find${keyword ? `?search=${keyword}` : ''}`
       );
       setResults(response.data);
     } catch (error) {
