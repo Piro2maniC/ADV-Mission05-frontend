@@ -23,7 +23,7 @@ padding-left: 159px;
     display: flex;
     justify-content: space-between;
     padding-left: 159px;
-    padding-right: 159px;
+    /* padding-right: 159px; */
     padding-top: 20px;
     padding-bottom: 20px;
 
