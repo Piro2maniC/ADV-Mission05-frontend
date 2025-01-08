@@ -1,24 +1,102 @@
 .sellerContainer {
-  padding: 1rem;
-}
-
-.sellerDetails {
-  margin-top: 0.5rem;
+  padding: 1.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  background-color: white;
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.sellerHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profileImage {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.sellerNameSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.sellerName {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.ratingSection {
+  display: flex;
+  align-items: center;
   gap: 0.5rem;
 }
 
-.contactButton {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: #6c757d;
-  color: white;
-  border: none;
+.stars {
+  display: flex;
+  align-items: center;
+}
+
+.starIcon {
+  color: #ffc107;
+  font-size: 1.2rem;
+}
+
+.reviews {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.verificationBadges {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.badge {
+  padding: 0.25rem 0.75rem;
   border-radius: 4px;
+  background-color: #e8f4fd;
+  color: #0076bc;
+  border: 1px solid #0076bc;
+  font-size: 0.8rem;
   cursor: pointer;
 }
 
-.contactButton:hover {
-  background-color: #5a6268;
+.feedbackSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.feedbackRate {
+  font-weight: 500;
+}
+
+.shopButton {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: transparent;
+  color: #007bff;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-weight: 250;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.shopButton:hover {
+  background-color: #005f96;
 }

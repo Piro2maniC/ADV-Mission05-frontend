@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import styles from "./compare.module.css";
 import ListingHeader from "./components/ListingHeader";
 import BiddingInfo from "./components/BiddingInfo";
@@ -11,6 +13,7 @@ const ComparePage = () => {
   const [listing1, setListing1] = useState(null);
   const [listing2, setListing2] = useState(null);
   const location = useLocation();
+  const navigate = useNavigate();
   const searchParams = new URLSearchParams(location.search);
   const id1 = searchParams.get("id1");
   const id2 = searchParams.get("id2");
@@ -56,7 +59,27 @@ const ComparePage = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Compare Listings</h1>
+      <div className={styles.subHeader}>
+        <div className={styles.leftNav}>
+          <button className={styles.navButton}>
+            Browse Marketplace <KeyboardArrowDownIcon />
+          </button>
+          <button className={styles.navButton}>Stores</button>
+          <button className={styles.navButton}>Detail</button>
+          <button className={styles.navButton}>Book a Courier</button>
+        </div>
+        <button className={styles.navButton}>List an Item</button>
+      </div>
+      <div className={styles.headerContainer}>
+        <h1 className={styles.title}>Compare Listings</h1>
+        <button
+          className={styles.backButton}
+          onClick={() => navigate("/search")}
+        >
+          <ArrowBackIcon className={styles.backIcon} />
+          Back to Search
+        </button>
+      </div>
       <div className={styles.compareContainer}>
         <div className={styles.listingColumn}>
           {renderListingCard(listing1)}
