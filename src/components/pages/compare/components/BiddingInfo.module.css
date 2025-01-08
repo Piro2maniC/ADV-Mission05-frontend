@@ -1,0 +1,96 @@
+.biddingContainer {
+  padding: 1.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  background-color: white;
+}
+
+.priceLabel {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.priceAmount {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #000;
+  margin: 0.25rem 0;
+}
+
+.reserveStatus {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.priceInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.buyNowSection,
+.bidSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.buyNowButton,
+.cartButton,
+.bidButton {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.buyNowButton {
+  background-color: #0076bc;
+  color: white;
+}
+
+.buyNowButton:hover {
+  background-color: #005f96;
+}
+
+.cartButton {
+  background-color: transparent;
+  color: #007bff;
+  font-weight: 250;
+}
+
+.bidHistory {
+  color: #007bff;
+  font-weight: 250;
+}
+
+.cartButton:hover {
+  background-color: #f0f7ff;
+}
+
+.bidButton {
+  background-color: #0076bc;
+  color: white;
+}
+
+.bidSection div {
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.bidHistory {
+  text-align: center;
+}
+
+.bidHistory h3 {
+  margin-bottom: 1rem;
+}

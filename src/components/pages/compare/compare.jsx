@@ -1,79 +1,92 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import styles from "./compare.module.css";
+import ListingHeader from "./components/ListingHeader";
+import BiddingInfo from "./components/BiddingInfo";
+import ItemDescription from "./components/ItemDescription";
+import SellerInfo from "./components/SellerInfo";
 
 const ComparePage = () => {
   const [listing1, setListing1] = useState(null);
   const [listing2, setListing2] = useState(null);
   const location = useLocation();
+  const navigate = useNavigate();
   const searchParams = new URLSearchParams(location.search);
-  const title1 = searchParams.get("title1");
-  const title2 = searchParams.get("title2");
+  const id1 = searchParams.get("id1");
+  const id2 = searchParams.get("id2");
 
-  const fetchListings = async () => {
+  const fetchListings = useCallback(async () => {
     try {
-      if (!title1 || !title2) {
-        console.error("Missing listing titles");
+      if (!id1 || !id2) {
+        console.error("Missing listing IDs");
         return;
       }
 
-      const baseURL = "http://localhost:5001"; // Changed from 5000 to 5001
-      console.log(
-        "Fetching from URLs:",
-        `${baseURL}/find?search=${encodeURIComponent(title1)}`,
-        `${baseURL}/find?search=${encodeURIComponent(title2)}`
-      );
-
+      const baseURL = "http://localhost:5001";
       const [response1, response2] = await Promise.all([
-        axios.get(`${baseURL}/find?search=${encodeURIComponent(title1)}`),
-        axios.get(`${baseURL}/find?search=${encodeURIComponent(title2)}`),
+        axios.get(`${baseURL}/find/${id1}`),
+        axios.get(`${baseURL}/find/${id2}`),
       ]);
 
-      if (response1.data.length > 0) setListing1(response1.data[0]);
-      if (response2.data.length > 0) setListing2(response2.data[0]);
+      setListing1(response1.data);
+      setListing2(response2.data);
     } catch (error) {
       console.error("Error fetching listings:", error);
     }
-  };
+  }, [id1, id2]);
 
   useEffect(() => {
-    fetchListings();
-  }, [title1, title2]);
+    if (id1 && id2) {
+      fetchListings();
+    }
+  }, [fetchListings]);
 
   const renderListingCard = (listing) => {
     if (!listing) return <div>Loading...</div>;
 
     return (
       <div className={styles.card}>
-        <div className={styles.cardBody}>
-          <h2 className={styles.cardTitle}>{listing.title}</h2>
-          <div className={styles.cardText}>
-            <strong>Description:</strong> {listing.description}
-            <br />
-            <strong>Start Price:</strong> ${listing.start_price}
-            <br />
-            <strong>Reserve Price:</strong> ${listing.reserve_price}
-          </div>
-          <Link to={`/search`} className={styles.button}>
-            View All Listings
-          </Link>
-        </div>
+        <ListingHeader listing={listing} />
+        <BiddingInfo listing={listing} />
+        <ItemDescription listing={listing} />
+        <SellerInfo listing={listing} />
       </div>
     );
   };
 
   return (
     <div className={styles.container}>
-      <div className={styles.headerSection}>
-        <Link to="/search" className={styles.backButton}>
-          Back to Search
-        </Link>
-        <h1 className={styles.title}>Compare Listings</h1>
+      <div className={styles.subHeader}>
+        <div className={styles.leftNav}>
+          <button className={styles.navButton}>
+            Browse Marketplace <KeyboardArrowDownIcon />
+          </button>
+          <button className={styles.navButton}>Stores</button>
+          <button className={styles.navButton}>Detail</button>
+          <button className={styles.navButton}>Book a Courier</button>
+        </div>
+        <button className={styles.navButton}>List an Item</button>
       </div>
-      <div className={styles.row}>
-        {renderListingCard(listing1)}
-        {renderListingCard(listing2)}
+      <div className={styles.headerContainer}>
+        <h1 className={styles.title}>Compare Listings</h1>
+        <button
+          className={styles.backButton}
+          onClick={() => navigate("/search")}
+        >
+          <ArrowBackIcon className={styles.backIcon} />
+          Back to Search
+        </button>
+      </div>
+      <div className={styles.compareContainer}>
+        <div className={styles.listingColumn}>
+          {renderListingCard(listing1)}
+        </div>
+        <div className={styles.listingColumn}>
+          {renderListingCard(listing2)}
+        </div>
       </div>
     </div>
   );
