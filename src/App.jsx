@@ -1,9 +1,9 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import LayoutLanding from "./common/Layout-Landing/LayoutLanding.jsx";
-import Landing from "./components/pages/Landing/landing";
-import Search from "./components/pages/Search/search";
-import Compare from "./components/pages/Compare/compare";
+import Landing from "./components/pages/landing/landing.jsx";
+import Search from "./components/pages/search/search.jsx";
+import Compare from "./components/pages/compare/compare.jsx";
 import Listing from "./components/pages/listing/listing";
 import "./App.css";
 
