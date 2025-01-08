@@ -1,26 +1,25 @@
 .layoutGrid {
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-areas:
-      "header header header"
-      "content content content"
-      "footer footer footer";
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .header {
-    grid-area: header;
-
-
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: white;
 }
 
 .content {
-    grid-area: content;
-   
+    flex: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 .footer {
-    grid-area: footer;
-
+    margin-top: auto;
+    background-color: #f8f9fa;
 }

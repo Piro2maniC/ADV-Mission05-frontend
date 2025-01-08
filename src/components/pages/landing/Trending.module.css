@@ -5,7 +5,7 @@ font-size: 16px;
 font-style: normal;
 font-weight: 700;
 line-height: normal;
-padding-left: 159px;
+/* padding-left: 159px; */
 }
 
 .categoriesHeading{
@@ -15,15 +15,15 @@ padding-left: 159px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    padding-left: 159px;
+    /* padding-left: 159px; */
 
 }
 
 .categories{
     display: flex;
     justify-content: space-between;
-    padding-left: 159px;
-    padding-right: 159px;
+    /* padding-left: 159px; */
+    /* padding-right: 159px; */
     padding-top: 20px;
     padding-bottom: 20px;
 

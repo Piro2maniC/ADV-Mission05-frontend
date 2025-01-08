@@ -267,3 +267,24 @@
   border-color: #007bff;
   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
+
+.searchForm {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  align-items: center;
+}
+
+.searchButton {
+  padding: 8px 16px;
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.searchButton:hover {
+  background-color: #0052a3;
+}

@@ -5,11 +5,11 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    padding-left: 159px;
+    /* padding-left: 159px; */
     padding-top: 46px;
-
+ 
 }
-
+ 
 .coolAuctions{
     display: flex;
     flex-direction: row;
@@ -18,6 +18,6 @@
     margin-top: 20px;
     font-family: Inter;
     padding-bottom: 39px;
-    padding-left: 160px;
-    padding-right: 160px
+    /* padding-left: 160px;
+    padding-right: 160px */
 }
