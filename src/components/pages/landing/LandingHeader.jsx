@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from "../../styles/ConstHeader.module.css";
-import Logo from "../../assets/trademe-logo-no-tagline.png"
-import WatchlistIcon from "../../assets/Group.png"
-import FavouritesIcon from "../../assets/line-md_heart.png"
-import StartListingIcon from "../../assets/prime_pencil.png"
-import MyTradeMeIcon from "../../assets/lucide_circle-user-round.png"
-import SearchIcon from "../../assets/searchIcon.png"
+import styles from "../landing/LandingHeader.module.css";
+import Logo from "../../../assets/trademe-logo-no-tagline.png"
+import WatchlistIcon from "../../../assets/Group.png"
+import FavouritesIcon from "../../../assets/line-md_heart.png"
+import StartListingIcon from "../../../assets/prime_pencil.png"
+import MyTradeMeIcon from "../../../assets/lucide_circle-user-round.png"
+import SearchIcon from "../../../assets/searchIcon.png"
 
-export default function ConstHeader() {
+export default function LandingHeader() {
   return (
     <header className={styles.headerSearchBar}>
     <div className={styles.topNav}>
@@ -38,29 +38,26 @@ export default function ConstHeader() {
             Browse
             <span className={styles.dropdownArrow}>▼</span>
 </div>
-<div className={styles.searchInputContainer}>
+{/* <div className={styles.searchInputContainer}>
 <img className={styles.searchIcon} src={SearchIcon}></img>
 
   <input type="text" placeholder="Search" />
   <button className={styles.searchButton}>
             </button>
-          </div>
+          </div> */}
         </div>
         
         <div className={styles.userActions}>
         <Link to="/watchlist" className={styles.actionLink}>
-            <span className={styles.icon}>
-            <img src={WatchlistIcon}></img></span>
-          Watchlist
+            <span className={styles.icon}><img src={WatchlistIcon}></img></span>
+            Watchlist
           </Link>
           <Link to="/favourites" className={styles.actionLink}>
-          <span className={styles.icon}>
-          <img src={FavouritesIcon}></img></span>
-          Favourites
+ <span className={styles.icon}><img src={FavouritesIcon}></img></span>
+ Favourites
 </Link>
 <Link to="/listing/new" className={styles.actionLink}>
-<span className={styles.icon}>
-<img src={StartListingIcon}></img></span>
+<span className={styles.icon}><img src={StartListingIcon}></img></span>
  Start a listing
 </Link>
 <Link to="/my-trademe" className={styles.actionLink}>

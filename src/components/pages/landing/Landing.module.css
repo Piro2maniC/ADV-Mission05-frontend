@@ -1,0 +1,200 @@
+/* @import '../assets/fonts.css'; */
+
+.searchContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    
+  }
+  
+  .backgroundBlock {
+    background: linear-gradient(90deg, #5251D3, #5B61DB);
+    position: absolute;
+    /* padding-top: 80px; */
+    left: 0;
+    right: 0;
+    height: 270px;
+    z-index: -1;
+    /* margin-top: 50px; */
+  }
+
+  .heading {
+    color: #E7B2DA;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    text-align: left;
+ 
+        font-family: "Barlow Condensed", serif;
+        font-weight: 700;
+        font-style: normal;
+        font-size: 48px;
+      
+      
+  }
+  
+  .searchBox {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    position: relative;
+    outline: none
+  }
+  .iconContainer {
+    position: absolute;
+    left: 16px; /* Adjust as needed for spacing */
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; /* Prevent interaction with the icon */
+  }
+
+  .searchIcon{
+    width: 16px;
+height: 16px;
+  }
+  
+  .searchInput {
+
+    width: 100%;
+    height: 56px;
+    border-radius: 8px;
+    background: #FFF;
+    color: #8A8685;
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.7px;
+    padding-left: 42px; /* Account for the icon's width + padding */
+    border: none;
+    outline: none;
+
+  }
+  
+  .searchButton {
+    width: 107px;
+height: 46px;
+flex-shrink: 0;
+border-radius: 4px;
+background: #3E74CB;
+
+    border: none;
+    padding: 0 1rem;
+    cursor: pointer;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.48px;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%); 
+  }
+  
+  .searchButton:hover {
+    background-color: #0052a3;
+  }
+  
+  .categoryNav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: inter;
+    gap: 0;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    margin-top: 5px;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    outline: white solid 8px;
+  }
+  
+  .categoryLink {
+    flex: 1;
+    padding: 1rem;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: opacity 0.2s;
+  }
+  
+  .categoryLink:hover {
+    opacity: 0.9;
+  }
+  
+  .marketplace { background-color: #E15554; }
+  .jobs { background-color: #E17C24; }
+  .motors { background-color: #848FA5; }
+  .property { background-color: #27AE60; }
+  .services { background-color: #666666; }
+  
+  .resultsContainer {
+    width: 100%;
+    max-width: 800px;
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .resultsTitle {
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-family: 'Story Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  .resultsList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .resultItem {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .resultItem:last-child {
+    border-bottom: none;
+  }
+  
+  .resultTitle {
+    color: #0066cc;
+    margin-bottom: 0.5rem;
+    font-family: 'Story Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  .resultDescription {
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  .resultPrice {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+  
+  .noResults {
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    color: #666;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: 'Story Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
