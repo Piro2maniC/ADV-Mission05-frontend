@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import styles from "./Landing.module.css";
 import TopGallery from "./TopGallery.jsx";
 import CoolAuctions from "./CoolAuctions.jsx";
@@ -13,6 +14,9 @@ const Landing = () => {
   const [keyword, setKeyword] = useState("");
   const [results, setResults] = useState([]);
   const [hasSearched, setHasSearched] = useState(false);
+
+  const navigate = useNavigate();
+
 
   const handleSearch = async () => {
     setHasSearched(true);
@@ -29,8 +33,12 @@ const Landing = () => {
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       handleSearch();
-    }
+    }  
+    navigate(`/search/${keyword}`);
   };
+
+
+ 
 
   return (
     <div>
