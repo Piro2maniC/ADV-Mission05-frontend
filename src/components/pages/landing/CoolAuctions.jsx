@@ -40,13 +40,3 @@ export default function CoolAuctions() {
   );
 }
 
-
-// In your backend server file
-// app.get('/api/auctions', async (req, res) => {
-//   try {
-//       const items = await AuctionItems.find().limit(5); // Fetch 5 items
-//       res.json(items);
-//   } catch (err) {
-//       res.status(500).json({ error: 'Failed to fetch auction items' });
-//   }
-// });
