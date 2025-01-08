@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styles from '../../styles/Card.module.css';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import styles from "../../styles/Card.module.css";
 import WatchlistIcon from "../../assets/addToWatchlist.png";
 import defaultImage from "../../assets/placeholder.png";
 
-export default function Card({ 
+export default function Card({
   _id,
-  image_url, 
-  location, 
+  image_url,
+  location,
   closing_date,
-  closing_time, 
-  title, 
+  closing_time,
+  title,
   reserve_price,
   current_bid,
-  buy_now_price, 
+  buy_now_price,
   onCompare,
-  isCompareDisabled
+  isCompareDisabled,
 }) {
   const navigate = useNavigate();
   const [isCompared, setIsCompared] = useState(false);
-  const [timeRemaining, setTimeRemaining] = useState('');
+  const [timeRemaining, setTimeRemaining] = useState("");
   const [imageError, setImageError] = useState(false);
   const [isImageLoading, setIsImageLoading] = useState(true);
 
@@ -32,7 +32,7 @@ export default function Card({
       setImageError(false);
     };
     img.onerror = () => {
-      console.error('Failed to load image:', image_url);
+      console.error("Failed to load image:", image_url);
       setIsImageLoading(false);
       setImageError(true);
     };
@@ -43,18 +43,20 @@ export default function Card({
     const closing = new Date(closingDate);
     const diffMs = closing - now;
     const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-    const diffHours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const diffHours = Math.floor(
+      (diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
     const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
 
     if (diffMs < 0) {
-      return 'Auction ended';
+      return "Auction ended";
     }
 
     if (diffDays > 0) {
-      const date = closing.toLocaleDateString('en-NZ', {
-        weekday: 'short',
-        day: 'numeric',
-        month: 'short'
+      const date = closing.toLocaleDateString("en-NZ", {
+        weekday: "short",
+        day: "numeric",
+        month: "short",
       });
       return `Closes ${date}`;
     } else {
@@ -76,18 +78,19 @@ export default function Card({
   const handleCompareClick = (e) => {
     e.preventDefault();
     if (isCompareDisabled && !isCompared) return;
-    
+
     setIsCompared(!isCompared);
     if (onCompare) {
       onCompare({
+        _id,
+        title,
         image_url,
         location,
         closing_date,
         closing_time,
-        title,
         reserve_price,
         current_bid,
-        _id: Math.random().toString()
+        buy_now_price,
       });
     }
   };
@@ -100,7 +103,7 @@ export default function Card({
 
   const handleCardClick = (e) => {
     // Don't navigate if clicking compare or buy now buttons
-    if (e.target.tagName === 'BUTTON') {
+    if (e.target.tagName === "BUTTON") {
       return;
     }
     navigate(`/listing/${_id}`);
@@ -108,15 +111,19 @@ export default function Card({
 
   return (
     <div className={styles.card} onClick={handleCardClick}>
-      <img src={WatchlistIcon} alt="Watchlist Icon" className={styles.watchlistIcon} />
+      <img
+        src={WatchlistIcon}
+        alt="Watchlist Icon"
+        className={styles.watchlistIcon}
+      />
       <div className={styles.imageContainer}>
         {isImageLoading && (
           <div className={styles.imagePlaceholder}>Loading...</div>
         )}
-        <img 
+        <img
           src={imageError ? defaultImage : image_url}
           alt={title}
-          className={`${styles.picture} ${isImageLoading ? styles.hidden : ''}`}
+          className={`${styles.picture} ${isImageLoading ? styles.hidden : ""}`}
           onError={() => setImageError(true)}
           loading="lazy"
         />
@@ -126,23 +133,28 @@ export default function Card({
         <p className={styles.location}>{location}</p>
         <p className={styles.timeRemaining}>{timeRemaining}</p>
         <p className={styles.currentBid}>Current Bid: ${current_bid}</p>
-        <p className={`${styles.reserveStatus} ${current_bid >= reserve_price ? styles.reserveMet : styles.reserveNotMet}`}>
-          {current_bid >= reserve_price ? 'Reserve met' : 'Reserve not met'}
+        <p
+          className={`${styles.reserveStatus} ${
+            current_bid >= reserve_price
+              ? styles.reserveMet
+              : styles.reserveNotMet
+          }`}
+        >
+          {current_bid >= reserve_price ? "Reserve met" : "Reserve not met"}
         </p>
         {buy_now_price && (
-          <button 
-            className={styles.buyNowButton}
-            onClick={handleBuyNow}
-          >
+          <button className={styles.buyNowButton} onClick={handleBuyNow}>
             Buy Now: ${buy_now_price}
           </button>
         )}
         <button
-          className={`${styles.compareButton} ${isCompared ? styles.compared : ''} ${isCompareDisabled && !isCompared ? styles.disabled : ''}`}
+          className={`${styles.compareButton} ${
+            isCompared ? styles.compared : ""
+          } ${isCompareDisabled && !isCompared ? styles.disabled : ""}`}
           onClick={handleCompareClick}
           disabled={isCompareDisabled && !isCompared}
         >
-          {isCompared ? 'Remove' : 'Compare'}
+          {isCompared ? "Remove" : "Compare"}
         </button>
       </div>
     </div>

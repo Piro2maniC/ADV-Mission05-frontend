@@ -16,7 +16,7 @@ function Search() {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await fetch("http://localhost:5001/find");
+        const response = await fetch("http://localhost:5000/find");
         if (!response.ok) {
           throw new Error("Failed to fetch auction items");
         }
