@@ -87,7 +87,7 @@ export default function Card({
         title,
         reserve_price,
         current_bid,
-        _id: Math.random().toString()
+        _id
       });
     }
   };

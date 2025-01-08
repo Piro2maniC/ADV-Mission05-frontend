@@ -1,13 +1,13 @@
 .coolTiles {
     display: flex;
     justify-content: space-between;
-    padding-left: 169px;
-    padding-right: 169px;
+    /* padding-left: 169px;
+    padding-right: 169px; */
     padding-top: 20px;
     padding-bottom: 20px;
     font-family: Inter;
 }
-
+ 
 .tileOne {
     width: 352px;
     height: 232px;
@@ -17,7 +17,7 @@
     background: #FFF;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
 }
-
+ 
 .tileOne h1 {
     color: #5554D4;
     font-family: Inter;
@@ -28,7 +28,7 @@
     padding-top: 20px;
     padding-left: 18px;
 }
-
+ 
 .tileOne p {
     color: #5554D4;
 font-family: Inter;
@@ -38,9 +38,9 @@ font-weight: 500;
 line-height: normal;
 padding-left: 18px;
 width: 149px
-
+ 
 }
-
+ 
 .tileOne button {
 width: 78px;
 height: 29px;
@@ -50,8 +50,8 @@ background: #5554D4;
 outline: none;
 margin: 0 20px;
 border: none;
-
-
+ 
+ 
 /* font */
 color: #FFF;
 font-family: Inter;
@@ -61,13 +61,13 @@ font-weight: 700;
 line-height: normal;
 outline: none;
 }
-
+ 
 .tileOne button:hover {
 cursor: pointer;
 background: #5151c4 ;
-
+ 
 }
-
+ 
 .tileTwo {
 width: 352px;
 height: 232px;
@@ -76,7 +76,7 @@ border-radius: 8px;
 background: #5554D4;
 box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
 }
-
+ 
 .tileTwo h1 {
 color: #FFF;
 font-family: Inter;
@@ -87,7 +87,7 @@ line-height: normal;
 padding-top: 20px;
 padding-left: 18px;
 }
-
+ 
 .tileTwo p {
 color: #FFF;
 font-family: Inter;
@@ -97,7 +97,7 @@ font-weight: 500;
 line-height: normal;
 padding-left: 20px;
 }
-
+ 
 .tileTwo button {
 width: 108px;
 height: 29px;
@@ -106,7 +106,7 @@ border-radius: 2px;
 background: #FFF;
 margin: 0 20px;
 border: none;
-
+ 
 /* font */
 color: #5554D4;
 font-family: Inter;
@@ -115,16 +115,16 @@ font-style: normal;
 font-weight: 700;
 line-height: normal;
 }
-
+ 
 .tileTwo button:hover {
     cursor: pointer;
     background: #f6f5f5 ;
-
+ 
     }
-
-
+ 
+ 
 .tileThree{
-
+ 
     width: 352px;
     height: 232px;
     flex-shrink: 0;
@@ -132,7 +132,7 @@ line-height: normal;
     background: #5554D4;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
 }
-
+ 
 .tileThree h1 {
     color: #FFF;
 font-family: Inter;
@@ -143,7 +143,7 @@ line-height: normal;
 padding-top: 20px;
 padding-left: 18px;
 }
-
+ 
 .tileThree p {
     color: #FFF;
 font-family: Inter;
@@ -152,10 +152,10 @@ font-style: normal;
 font-weight: 500;
 line-height: normal;
 padding-left: 20px;
-
+ 
 }
-
-
+ 
+ 
 .tileThree button {
 width: 108px;
 height: 29px;
@@ -164,8 +164,8 @@ border-radius: 2px;
 background: #FFF;
 margin: 0 20px;
 border: none;
-
-
+ 
+ 
 /* font */
 color: #5554D4;
 font-family: Inter;
@@ -174,7 +174,7 @@ font-style: normal;
 font-weight: 700;
 line-height: normal;
 }
-
+ 
 .tileThree button:hover {
     cursor: pointer;
     background: #f6f5f5 ;

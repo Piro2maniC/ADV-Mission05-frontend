@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate, Link, useLocation, useParams } from 'react-router-dom'
 import Card from '../../shared/Card'
 import styles from '../../../styles/Search.module.css'
 
@@ -12,11 +12,19 @@ function Search() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
   const navigate = useNavigate();
+  const location = useLocation();
+  const { keyword } = useParams();
+
+  useEffect(() => {
+    if (keyword) {
+      setSearchQuery(keyword);
+    }
+  }, [keyword]);
 
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await fetch('http://localhost:4000/find');
+        const response = await fetch(`http://localhost:4000/find${searchQuery ? `?search=${searchQuery}` : ''}`);
         if (!response.ok) {
           throw new Error('Failed to fetch auction items');
         }
@@ -30,27 +38,43 @@ function Search() {
     };
 
     fetchItems();
-  }, []);
+  }, [searchQuery]);
+
+  const handleSearchChange = (e) => {
+    const newQuery = e.target.value;
+    setSearchQuery(newQuery);
+    // Update URL with new search query
+    const params = new URLSearchParams(location.search);
+    if (newQuery) {
+      params.set('keyword', newQuery);
+    } else {
+      params.delete('keyword');
+    }
+    navigate(`/search?${params.toString()}`);
+  };
 
   const categories = ['All Categories', ...new Set(items.map(item => item.category))].filter(Boolean);
 
   const filteredItems = items.filter(item => {
-    const matchesCategory = selectedCategory === 'All Categories' || item.category === selectedCategory;
-    const matchesSearch = !searchQuery || 
+    const matchesSearch = searchQuery === '' || 
       item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.description.toLowerCase().includes(searchQuery.toLowerCase());
+      item.description?.toLowerCase().includes(searchQuery.toLowerCase());
+    
+    const matchesCategory = selectedCategory === 'All Categories' || 
+      item.category === selectedCategory;
+
     return matchesCategory && matchesSearch;
   });
 
   const handleCompare = (item) => {
     console.log('handleCompare called with item:', item);
     setCompareItems(prev => {
-      const exists = prev.some(i => i.title === item.title);
+      const exists = prev.some(i => i._id === item._id);
       console.log('Item exists in compare list:', exists);
       console.log('Current compare items:', prev);
       
       if (exists) {
-        const newItems = prev.filter(i => i.title !== item.title);
+        const newItems = prev.filter(i => i._id !== item._id);
         console.log('Removing item, new list:', newItems);
         return newItems;
       } else if (prev.length < 2) {
@@ -66,7 +90,7 @@ function Search() {
 
   const handleCompareClick = () => {
     if (compareItems.length === 2) {
-      navigate('/compare', { state: { items: compareItems } });
+      navigate(`/compare?id1=${compareItems[0]._id}&id2=${compareItems[1]._id}`);
     } else {
       alert('Please select 2 items to compare');
     }
@@ -89,7 +113,7 @@ function Search() {
             type="text"
             placeholder="Search..."
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={handleSearchChange}
             className={styles.searchInput}
           />
           <button className={styles.clearSearch} onClick={() => setSearchQuery('')}>×</button>
@@ -157,7 +181,7 @@ function Search() {
             key={item._id} 
             {...item} 
             onCompare={handleCompare}
-            isCompareDisabled={compareItems.length === 2 && !compareItems.some(i => i.title === item.title)}
+            isCompareDisabled={compareItems.length === 2 && !compareItems.some(i => i._id === item._id)}
           />
         ))}
       </div>
