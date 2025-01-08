@@ -17,9 +17,11 @@ const Landing = () => {
   const navigate = useNavigate();
   
   const handleSearch = () => {
+    if (!keyword.trim()) {
+      return; // Don't navigate if the search is empty or just whitespace
+    }
     setHasSearched(true);
-    navigate(`/search/${keyword}`);
-  //   try {
+      //   try {
   //     const response = await axios.get(
   //       `http://localhost:5001/find${keyword ? `?search=${keyword}` : ''}`
   //     );
@@ -29,6 +31,8 @@ const Landing = () => {
   //   }
   //   navigate(`/search/${keyword}`);
   // };
+
+    navigate(`/search/${encodeURIComponent(keyword.trim())}`);
   };
 
   const handleKeyPress = (e) => {
