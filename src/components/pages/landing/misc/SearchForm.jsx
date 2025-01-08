@@ -11,7 +11,7 @@ const SearchForm = () => {
     setHasSearched(true);
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/search?keyword=${keyword}`
+        `http://localhost:5001/api/search?keyword=${keyword}`
       );
       setResults(response.data);
     } catch (error) {
@@ -20,7 +20,7 @@ const SearchForm = () => {
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       handleSearch();
     }
   };
@@ -43,11 +43,21 @@ const SearchForm = () => {
       </div>
 
       <nav className={styles.categoryNav}>
-        <a href="#" className={`${styles.categoryLink} ${styles.marketplace}`}>Marketplace</a>
-        <a href="#" className={`${styles.categoryLink} ${styles.jobs}`}>Jobs</a>
-        <a href="#" className={`${styles.categoryLink} ${styles.motors}`}>Motors</a>
-        <a href="#" className={`${styles.categoryLink} ${styles.property}`}>Property</a>
-        <a href="#" className={`${styles.categoryLink} ${styles.services}`}>Services</a>
+        <a href="#" className={`${styles.categoryLink} ${styles.marketplace}`}>
+          Marketplace
+        </a>
+        <a href="#" className={`${styles.categoryLink} ${styles.jobs}`}>
+          Jobs
+        </a>
+        <a href="#" className={`${styles.categoryLink} ${styles.motors}`}>
+          Motors
+        </a>
+        <a href="#" className={`${styles.categoryLink} ${styles.property}`}>
+          Property
+        </a>
+        <a href="#" className={`${styles.categoryLink} ${styles.services}`}>
+          Services
+        </a>
       </nav>
 
       {results.length > 0 && (
@@ -59,9 +69,12 @@ const SearchForm = () => {
                 <div className={styles.resultTitle}>
                   <strong>{item.title}</strong>
                 </div>
-                <div className={styles.resultDescription}>{item.description}</div>
+                <div className={styles.resultDescription}>
+                  {item.description}
+                </div>
                 <div className={styles.resultPrice}>
-                  Start Price: ${item.start_price} | Reserve Price: ${item.reserve_price}
+                  Start Price: ${item.start_price} | Reserve Price: $
+                  {item.reserve_price}
                 </div>
               </li>
             ))}

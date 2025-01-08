@@ -1,23 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import styles from '../../../styles/listing.module.css';
-import defaultImage from '../../../assets/placeholder.png';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import styles from "../../../styles/listing.module.css";
+import defaultImage from "../../../assets/placeholder.png";
 
 export default function Listing() {
   const { id } = useParams();
   const [listing, setListing] = useState(null);
   const [imageError, setImageError] = useState(false);
-  const [timeRemaining, setTimeRemaining] = useState('');
+  const [timeRemaining, setTimeRemaining] = useState("");
 
   useEffect(() => {
-
     const fetchListing = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/api/auction-items/${id}`);
+        const response = await fetch(
+          `http://localhost:4000/api/auction-items/${id}`
+        );
         const data = await response.json();
         setListing(data);
       } catch (error) {
-        console.error('Error fetching listing:', error);
+        console.error("Error fetching listing:", error);
       }
     };
 
@@ -32,21 +33,23 @@ export default function Listing() {
       const closing = new Date(listing.closing_date);
       const diffMs = closing - now;
       const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-      const diffHours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const diffHours = Math.floor(
+        (diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
       const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
 
       if (diffMs < 0) {
-        setTimeRemaining('Auction ended');
+        setTimeRemaining("Auction ended");
         return;
       }
 
       if (diffDays > 0) {
-        const date = closing.toLocaleDateString('en-NZ', {
-          weekday: 'short',
-          day: 'numeric',
-          month: 'short',
-          hour: '2-digit',
-          minute: '2-digit'
+        const date = closing.toLocaleDateString("en-NZ", {
+          weekday: "short",
+          day: "numeric",
+          month: "short",
+          hour: "2-digit",
+          minute: "2-digit",
         });
         setTimeRemaining(`Closes ${date}`);
       } else {
@@ -64,38 +67,44 @@ export default function Listing() {
     e.preventDefault();
     const bidAmount = e.target.elements[0].value;
     try {
-      const response = await fetch(`http://localhost:5000/api/auction-items/${id}/bid`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ bid_amount: parseFloat(bidAmount) }),
-      });
+      const response = await fetch(
+        `http://localhost:5001/api/auction-items/${id}/bid`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ bid_amount: parseFloat(bidAmount) }),
+        }
+      );
       if (response.ok) {
         const updatedListing = await response.json();
         setListing(updatedListing);
         e.target.reset();
       }
     } catch (error) {
-      console.error('Error placing bid:', error);
+      console.error("Error placing bid:", error);
     }
   };
 
   const handleBuyNow = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:5000/api/auction-items/${id}/buy-now`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      const response = await fetch(
+        `http://localhost:5001/api/auction-items/${id}/buy-now`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       if (response.ok) {
         const updatedListing = await response.json();
         setListing(updatedListing);
       }
     } catch (error) {
-      console.error('Error processing buy now:', error);
+      console.error("Error processing buy now:", error);
     }
   };
 
@@ -113,23 +122,31 @@ export default function Listing() {
           className={styles.mainImage}
         />
       </div>
-      
+
       <div className={styles.detailsSection}>
         <h1 className={styles.title}>{listing.title}</h1>
         <p className={styles.location}>{listing.location}</p>
         <p className={styles.timeRemaining}>{timeRemaining}</p>
-        
+
         <div className={styles.bidSection}>
           <div className={styles.currentBid}>
             <h3>Current Bid</h3>
             <p className={styles.price}>${listing.current_bid}</p>
           </div>
-          
+
           <div className={styles.reserveStatus}>
             <h3>Reserve Price</h3>
             <p className={styles.price}>${listing.reserve_price}</p>
-            <p className={`${styles.status} ${listing.current_bid >= listing.reserve_price ? styles.met : styles.notMet}`}>
-              {listing.current_bid >= listing.reserve_price ? 'Reserve met' : 'Reserve not met'}
+            <p
+              className={`${styles.status} ${
+                listing.current_bid >= listing.reserve_price
+                  ? styles.met
+                  : styles.notMet
+              }`}
+            >
+              {listing.current_bid >= listing.reserve_price
+                ? "Reserve met"
+                : "Reserve not met"}
             </p>
           </div>
         </div>
@@ -143,14 +160,13 @@ export default function Listing() {
             className={styles.bidInput}
             required
           />
-          <button type="submit" className={styles.bidButton}>Place Bid</button>
+          <button type="submit" className={styles.bidButton}>
+            Place Bid
+          </button>
         </form>
 
         {listing.buy_now_price && (
-          <button 
-            className={styles.buyNowButton}
-            onClick={handleBuyNow}
-          >
+          <button className={styles.buyNowButton} onClick={handleBuyNow}>
             Buy Now: ${listing.buy_now_price}
           </button>
         )}
