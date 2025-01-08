@@ -9,7 +9,7 @@ export default function CoolAuctions() {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/auctions');
+        const response = await axios.get('http://localhost:4000/api/auctions');
         const shuffledItems = [...response.data].sort(() => 0.5 - Math.random());
         const uniqueItems = [...new Set(shuffledItems.map(item => JSON.stringify(item)))].map(item => JSON.parse(item));
         setItems(uniqueItems.slice(0, 4));

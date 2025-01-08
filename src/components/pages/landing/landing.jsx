@@ -14,7 +14,6 @@ const Landing = () => {
   const [keyword, setKeyword] = useState("");
   const [results, setResults] = useState([]);
   const [hasSearched, setHasSearched] = useState(false);
-
   const navigate = useNavigate();
 
 
@@ -22,19 +21,20 @@ const Landing = () => {
     setHasSearched(true);
     try {
       const response = await axios.get(
-        `http://localhost:5000/find${keyword ? `?search=${keyword}` : ''}`
+        `http://localhost:4000/find${keyword ? `?search=${keyword}` : ''}`
       );
       setResults(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
+    navigate(`/search/${keyword}`);
   };
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       handleSearch();
     }  
-    navigate(`/search/${keyword}`);
+    
   };
 
 
