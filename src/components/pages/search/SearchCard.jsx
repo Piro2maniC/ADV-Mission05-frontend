@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from '../../styles/Card.module.css';
-import WatchlistIcon from "../../assets/addToWatchlist.png";
-import defaultImage from "../../assets/placeholder.png";
+import styles from '../../../styles/SearchCard.module.css';
+import WatchlistIcon from "../../../assets/addToWatchlist.png"; 
+import defaultImage from "../../../assets/placeholder.png";
 
-export default function Card({ 
+export default function SearchCard({ 
   _id,
   image_url, 
   location, 
@@ -106,6 +106,13 @@ export default function Card({
     navigate(`/listing/${_id}`);
   };
 
+  // Extract city from location string format "City, Country")
+  const getCity = (location) => {
+    if (!location) return '';
+    const parts = location.split(',');
+    return parts[0].trim(); // Return just the city part
+  };
+
   return (
     <div className={styles.card} onClick={handleCardClick}>
       <img src={WatchlistIcon} alt="Watchlist Icon" className={styles.watchlistIcon} />
@@ -122,16 +129,18 @@ export default function Card({
         />
       </div>
       <div className={styles.content}>
-       
-        <p className={styles.location}>{location}</p> <p className={styles.timeRemaining}>{timeRemaining}</p>
+        <p className={styles.location}>{getCity(location)}</p>
+        <p className={styles.timeRemaining}>{timeRemaining}</p>
         <h3>{title}</h3>
-       <p className={styles.shipping}>$18 shipping to Auckland</p>
-       <p className={styles.shipping}>Expected delivery 3-5 business days </p>
-
-        <p className={styles.currentBid}>Current Bid: ${current_bid}</p>
-        <p className={`${styles.reserveStatus} ${current_bid >= reserve_price ? styles.reserveMet : styles.reserveNotMet}`}>
-          {current_bid >= reserve_price ? 'Reserve met' : 'Reserve not met'}
-        </p>
+        <p className={styles.shipping}>$18 shipping to Auckland</p>
+        <p className={styles.shipping}>Expected delivery 3-5 business days </p>
+        <button
+          className={`${styles.compareButton} ${isCompared ? styles.compared : ''} ${isCompareDisabled && !isCompared ? styles.disabled : ''}`}
+          onClick={handleCompareClick}
+          disabled={isCompareDisabled && !isCompared}
+        >
+          {isCompared ? 'Remove' : 'Compare'}
+        </button>
         {buy_now_price && (
           <button 
             className={styles.buyNowButton}
@@ -140,13 +149,6 @@ export default function Card({
             Buy Now: ${buy_now_price}
           </button>
         )}
-        <button
-          className={`${styles.compareButton} ${isCompared ? styles.compared : ''} ${isCompareDisabled && !isCompared ? styles.disabled : ''}`}
-          onClick={handleCompareClick}
-          disabled={isCompareDisabled && !isCompared}
-        >
-          {isCompared ? 'Remove' : 'Compare'}
-        </button>
       </div>
     </div>
   );

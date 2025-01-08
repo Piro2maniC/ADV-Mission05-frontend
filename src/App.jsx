@@ -13,6 +13,7 @@ function App() {
       <Routes>
         <Route element={<LayoutLanding />}>
           <Route path="/" element={<Landing />} />
+          <Route path="/search" element={<Search />} />
           <Route path="/search/:keyword" element={<Search />} />
           <Route path="/listing/:id" element={<Listing />} />
           <Route path="/compare" element={<Compare />} />

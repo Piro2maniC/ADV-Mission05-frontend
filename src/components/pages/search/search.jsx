@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate, Link, useLocation, useParams } from 'react-router-dom'
-import Card from '../../shared/Card'
+import Card from './SearchCard'
 import styles from '../../../styles/Search.module.css'
 
 function Search() {
@@ -21,23 +21,24 @@ function Search() {
     }
   }, [keyword]);
 
-  useEffect(() => {
-    const fetchItems = async () => {
-      try {
-        const response = await fetch(`http://localhost:4000/find${searchQuery ? `?search=${searchQuery}` : ''}`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch auction items');
-        }
-        const data = await response.json();
-        setItems(data);
-        setLoading(false);
-      } catch (err) {
-        setError(err.message);
-        setLoading(false);
+  const fetchItems = async (query = '') => {
+    try {
+      setLoading(true);
+      const response = await fetch(`http://localhost:4000/find${query ? `?search=${query}` : ''}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch auction items');
       }
-    };
+      const data = await response.json();
+      setItems(data);
+      setLoading(false);
+    } catch (err) {
+      setError(err.message);
+      setLoading(false);
+    }
+  };
 
-    fetchItems();
+  useEffect(() => {
+    fetchItems(searchQuery);
   }, [searchQuery]);
 
   const handleSearchChange = (e) => {
@@ -53,18 +54,31 @@ function Search() {
     navigate(`/search?${params.toString()}`);
   };
 
-  const categories = ['All Categories', ...new Set(items.map(item => item.category))].filter(Boolean);
+  const clearSearchFromUrl = () => {
+    navigate('/search');
+  };
 
-  const filteredItems = items.filter(item => {
-    const matchesSearch = searchQuery === '' || 
-      item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.description?.toLowerCase().includes(searchQuery.toLowerCase());
-    
-    const matchesCategory = selectedCategory === 'All Categories' || 
-      item.category === selectedCategory;
+  const handleCategoryChange = (e) => {
+    setSelectedCategory(e.target.value);
+    clearSearchFromUrl();
+  };
 
-    return matchesCategory && matchesSearch;
-  });
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+    clearSearchFromUrl();
+  };
+
+  const handleViewModeChange = (mode) => {
+    setViewMode(mode);
+    clearSearchFromUrl();
+  };
+
+  const handleClearSearch = () => {
+    setSearchQuery('');
+    setSelectedCategory('All Categories');
+    clearSearchFromUrl();
+    fetchItems(''); // Fetch all items when clearing search
+  };
 
   const handleCompare = (item) => {
     console.log('handleCompare called with item:', item);
@@ -99,6 +113,19 @@ function Search() {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
+  const categories = ['All Categories', ...new Set(items.map(item => item.category))].filter(Boolean);
+
+  const filteredItems = items.filter(item => {
+    const matchesSearch = searchQuery === '' || 
+      item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.description?.toLowerCase().includes(searchQuery.toLowerCase());
+    
+    const matchesCategory = selectedCategory === 'All Categories' || 
+      item.category === selectedCategory;
+
+    return matchesCategory && matchesSearch;
+  });
+
   return (
     <div className={styles.searchContainer}>
       <div className={styles.searchHeader}>
@@ -116,18 +143,18 @@ function Search() {
             onChange={handleSearchChange}
             className={styles.searchInput}
           />
-          <button className={styles.clearSearch} onClick={() => setSearchQuery('')}>×</button>
-          <button className={styles.saveSearch}>
+          <button className={styles.clearSearch} onClick={handleClearSearch}>×</button>
+          <button className={styles.saveSearch} onClick={clearSearchFromUrl}>
             <span className={styles.saveIcon}>💾</span>
             Save this search
           </button>
         </div>
         <div className={styles.filterBar}>
-          <button className={styles.refineButton}>Refine</button>
+          <button className={styles.refineButton} onClick={clearSearchFromUrl}>Refine</button>
           <div className={styles.categoryDropdown}>
             <select 
               value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
+              onChange={handleCategoryChange}
               className={styles.categorySelect}
             >
               {categories.map(category => (
@@ -137,9 +164,9 @@ function Search() {
               ))}
             </select>
           </div>
-          <button className={styles.locationButton}>All Locations</button>
-          <button className={styles.conditionButton}>New & Used</button>
-          <button className={styles.shippingButton}>Shipping: All</button>
+          <button className={styles.locationButton} onClick={clearSearchFromUrl}>All Locations</button>
+          <button className={styles.conditionButton} onClick={clearSearchFromUrl}>New & Used</button>
+          <button className={styles.shippingButton} onClick={clearSearchFromUrl}>Shipping: All</button>
         </div>
       </div>
 
@@ -148,7 +175,7 @@ function Search() {
           <button
             key={category}
             className={`${styles.categoryButton} ${selectedCategory === category ? styles.active : ''}`}
-            onClick={() => setSelectedCategory(category)}
+            onClick={() => handleCategoryClick(category)}
           >
             {category}
             <span className={styles.categoryCount}>
@@ -163,13 +190,13 @@ function Search() {
       <div className={styles.viewToggle}>
         <button 
           className={`${styles.toggleButton} ${viewMode === 'grid' ? styles.active : ''}`}
-          onClick={() => setViewMode('grid')}
+          onClick={() => handleViewModeChange('grid')}
         >
           Grid
         </button>
         <button 
           className={`${styles.toggleButton} ${viewMode === 'list' ? styles.active : ''}`}
-          onClick={() => setViewMode('list')}
+          onClick={() => handleViewModeChange('list')}
         >
           List
         </button>
