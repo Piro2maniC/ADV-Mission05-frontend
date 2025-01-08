@@ -38,20 +38,28 @@ function Search() {
   };
 
   useEffect(() => {
-    fetchItems(searchQuery);
-  }, [searchQuery]);
+    fetchItems();
+  }, []);
 
   const handleSearchChange = (e) => {
-    const newQuery = e.target.value;
-    setSearchQuery(newQuery);
-    // Update URL with new search query
+    setSearchQuery(e.target.value);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
     const params = new URLSearchParams(location.search);
-    if (newQuery) {
-      params.set('keyword', newQuery);
-    } else {
-      params.delete('keyword');
+    if (searchQuery.trim()) {
+      params.set('keyword', searchQuery.trim());
+      navigate(`/search?${params.toString()}`);
+      fetchItems(searchQuery.trim());
     }
-    navigate(`/search?${params.toString()}`);
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleSearchSubmit(e);
+    }
   };
 
   const clearSearchFromUrl = () => {
@@ -136,18 +144,24 @@ function Search() {
         </div>
         <h1 className={styles.pageTitle}>{selectedCategory}</h1>
         <div className={styles.searchBar}>
-          <input
-            type="text"
-            placeholder="Search..."
-            value={searchQuery}
-            onChange={handleSearchChange}
-            className={styles.searchInput}
-          />
-          <button className={styles.clearSearch} onClick={handleClearSearch}>×</button>
-          <button className={styles.saveSearch} onClick={clearSearchFromUrl}>
-            <span className={styles.saveIcon}>💾</span>
-            Save this search
-          </button>
+          <form onSubmit={handleSearchSubmit} className={styles.searchForm}>
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchQuery}
+              onChange={handleSearchChange}
+              onKeyPress={handleKeyPress}
+              className={styles.searchInput}
+            />
+            <button type="submit" className={styles.searchButton}>
+              Search
+            </button>
+            <button type="button" className={styles.clearSearch} onClick={handleClearSearch}>×</button>
+            <button type="button" className={styles.saveSearch} onClick={clearSearchFromUrl}>
+              <span className={styles.saveIcon}>💾</span>
+              Save this search
+            </button>
+          </form>
         </div>
         <div className={styles.filterBar}>
           <button className={styles.refineButton} onClick={clearSearchFromUrl}>Refine</button>
