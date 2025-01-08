@@ -177,9 +177,9 @@ function Search() {
               ))}
             </select>
           </div>
-          <button className={styles.locationButton} onClick={clearSearchFromUrl}>All Locations</button>
-          <button className={styles.conditionButton} onClick={clearSearchFromUrl}>New & Used</button>
-          <button className={styles.shippingButton} onClick={clearSearchFromUrl}>Shipping: All</button>
+          <button className={styles.categorySelect} onClick={clearSearchFromUrl}>All Locations</button>
+          <button className={styles.categorySelect} onClick={clearSearchFromUrl}>New & Used</button>
+          <button className={styles.categorySelect} onClick={clearSearchFromUrl}>Shipping: All</button>
         </div>
       </div>
 
