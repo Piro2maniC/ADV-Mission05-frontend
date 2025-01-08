@@ -13,7 +13,7 @@ export default function Listing() {
 
     const fetchListing = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/api/auction-items/${id}`);
+        const response = await fetch(`http://localhost:5001/api/auction-items/${id}`);
         const data = await response.json();
         setListing(data);
       } catch (error) {
@@ -64,7 +64,7 @@ export default function Listing() {
     e.preventDefault();
     const bidAmount = e.target.elements[0].value;
     try {
-      const response = await fetch(`http://localhost:5000/api/auction-items/${id}/bid`, {
+      const response = await fetch(`http://localhost:5001/api/auction-items/${id}/bid`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -84,7 +84,7 @@ export default function Listing() {
   const handleBuyNow = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:5000/api/auction-items/${id}/buy-now`, {
+      const response = await fetch(`http://localhost:5001/api/auction-items/${id}/buy-now`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
