@@ -26,13 +26,17 @@ const ComparePage = () => {
       }
 
       const baseURL = "http://localhost:5001";
-      const [response1, response2] = await Promise.all([
-        axios.get(`${baseURL}/find/${id1}`),
-        axios.get(`${baseURL}/find/${id2}`),
-      ]);
+      const response = await axios.get(
+        `${baseURL}/api/auction-items/compare?ids=${id1},${id2}`
+      );
+      const items = response.data;
 
-      setListing1(response1.data);
-      setListing2(response2.data);
+      // Match items to their respective states based on ID
+      const item1 = items.find((item) => item._id === id1);
+      const item2 = items.find((item) => item._id === id2);
+
+      setListing1(item1);
+      setListing2(item2);
     } catch (error) {
       console.error("Error fetching listings:", error);
     }
