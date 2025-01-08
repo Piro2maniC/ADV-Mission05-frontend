@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import styles from '../../../styles/SearchCard.module.css';
 import WatchlistIcon from "../../../assets/addToWatchlist.png"; 
 import defaultImage from "../../../assets/placeholder.png";
+import compareIcon from '../../../assets/Compare icon.png';
+import shippingIcon from '../../../assets/Truck.png';
+import deliveryIcon from '../../../assets/Delivered.png';
 
 export default function SearchCard({ 
   _id,
@@ -129,26 +132,37 @@ export default function SearchCard({
         />
       </div>
       <div className={styles.content}>
+        <div className={styles.locationAndTime}>
         <p className={styles.location}>{getCity(location)}</p>
-        <p className={styles.timeRemaining}>{timeRemaining}</p>
+        <p className={styles.timeRemaining}>{timeRemaining}</p></div>
         <h3>{title}</h3>
-        <p className={styles.shipping}>$18 shipping to Auckland</p>
-        <p className={styles.shipping}>Expected delivery 3-5 business days </p>
+        <div className={styles.shippingInfo}>
+          <img src={shippingIcon} alt="" className={styles.infoIcon} />
+          <p className={styles.shipping}>$18 shipping to Auckland</p>
+        </div>
+        <div className={styles.shippingInfo}>
+          <img src={deliveryIcon} alt="" className={styles.infoIcon} />
+          <p className={styles.shipping}>Expected delivery 3-5 business days </p>
+        </div>
+        <div className={styles.compareAndBuyNow}>
         <button
           className={`${styles.compareButton} ${isCompared ? styles.compared : ''} ${isCompareDisabled && !isCompared ? styles.disabled : ''}`}
           onClick={handleCompareClick}
           disabled={isCompareDisabled && !isCompared}
         >
-          {isCompared ? 'Remove' : 'Compare'}
+          <img src={compareIcon} alt="" className={styles.compareIcon} />
+          {isCompared ? 'Remove' : 'Add to compare'}
         </button>
         {buy_now_price && (
           <button 
             className={styles.buyNowButton}
             onClick={handleBuyNow}
           >
-            Buy Now: ${buy_now_price}
+            Buy Now <br /> <span className={styles.buyNowPrice}>${buy_now_price.toFixed(2)}</span>
           </button>
+         
         )}
+         </div>
       </div>
     </div>
   );

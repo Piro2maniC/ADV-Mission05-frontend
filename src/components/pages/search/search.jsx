@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, Link, useLocation, useParams } from "react-router-dom";
 import Card from "./SearchCard";
 import styles from "../../../styles/Search.module.css";
+import searchIcon from "../../../assets/Vector.png";
 
 function Search() {
   const [items, setItems] = useState([]);
@@ -156,30 +157,32 @@ function Search() {
         <h1 className={styles.pageTitle}>{selectedCategory}</h1>
         <div className={styles.searchBar}>
           <form onSubmit={handleSearchSubmit} className={styles.searchForm}>
-            <input
-              type="text"
-              placeholder="Search..."
-              value={searchQuery}
-              onChange={handleSearchChange}
-              onKeyPress={handleKeyPress}
-              className={styles.searchInput}
-            />
-            <button type="submit" className={styles.searchButton}>
-              Search
-            </button>
-            <button
-              type="button"
-              className={styles.clearSearch}
-              onClick={handleClearSearch}
-            >
-              ×
-            </button>
+            <div className={styles.searchInputContainer}>
+              <img
+                src={searchIcon}
+                alt="Search"
+                className={styles.searchIcon}
+              />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={handleSearchChange}
+                placeholder=""
+                className={styles.searchInput}
+              />
+              <button
+                type="button"
+                className={styles.clearSearch}
+                onClick={handleClearSearch}
+              >
+                ×
+              </button>
+            </div>
             <button
               type="button"
               className={styles.saveSearch}
               onClick={clearSearchFromUrl}
             >
-              <span className={styles.saveIcon}>💾</span>
               Save this search
             </button>
           </form>
@@ -202,19 +205,19 @@ function Search() {
             </select>
           </div>
           <button
-            className={styles.locationButton}
+            className={styles.categorySelect}
             onClick={clearSearchFromUrl}
           >
             All Locations
           </button>
           <button
-            className={styles.conditionButton}
+            className={styles.categorySelect}
             onClick={clearSearchFromUrl}
           >
             New & Used
           </button>
           <button
-            className={styles.shippingButton}
+            className={styles.categorySelect}
             onClick={clearSearchFromUrl}
           >
             Shipping: All
@@ -233,9 +236,11 @@ function Search() {
           >
             {category}
             <span className={styles.categoryCount}>
+              (
               {category === "All Categories"
                 ? items.length
                 : items.filter((item) => item.category === category).length}
+              )
             </span>
           </button>
         ))}

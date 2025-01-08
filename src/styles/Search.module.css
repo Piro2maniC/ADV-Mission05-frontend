@@ -1,6 +1,8 @@
 .searchContainer {
   padding: 20px;
   position: relative;
+  font-family: Inter;
+  
 }
 
 .searchHeader {
@@ -28,7 +30,7 @@
 }
 
 .pageTitle {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
   margin-bottom: 16px;
   color: #333;
@@ -41,34 +43,71 @@
   gap: 8px;
 }
 
+.searchInputContainer {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 10px;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
 .searchInput {
   flex: 1;
-  padding: 8px 12px;
-  border: 1px solid #ddd;
+  padding: 8px 8px 8px 32px;
+  border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
+  outline: none;
+  width: 100%;
+}
+
+.searchInput:focus {
+  border-color: #0066cc;
+  box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.1);
 }
 
 .clearSearch {
+  position: absolute;
+  right: 10px;
   background: none;
   border: none;
   font-size: 20px;
-  color: #666;
+  color: #8A8685;
   cursor: pointer;
-  padding: 0 8px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.clearSearch:hover {
+  color: #333;
 }
 
 .saveSearch {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 16px;
-  background-color: #f8f9fa;
-  border: 1px solid #ddd;
+  padding: 8px 16px 8px 38px;
+  background-color: #F0EEED;
+  background-image: url("../assets/SaveSearch.png");
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
-  color: #333;
+  font-weight: 700;
+  color: #3E74CB;
 }
 
 .saveSearch:hover {
@@ -82,31 +121,29 @@
 .filterBar {
   display: flex;
   gap: 8px;
-  margin-bottom: 16px;
+  
 }
 
-.filterBar button {
-  padding: 8px 16px;
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+
+.refineButton { 
+  width: 101px; 
+  background-image: url(../assets/rivet-icons_filter-solid.png), url(../assets/DropDownWhite.png);
+  background-repeat: no-repeat, no-repeat;
+  background-position: 12px center, right 8px center;
+  background-color: #3E74CB;
+  border: 2px solid #3E74CB;
+  border-radius: 17px;
   cursor: pointer;
+  color: white;
   font-size: 14px;
-  color: #333;
+  padding: 8px 30px 8px 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-.filterBar button:hover {
-  background-color: #f8f9fa;
-}
 
-.refineButton {
-  background-color: #007bff !important;
-  color: white !important;
-}
-
-.refineButton:hover {
-  background-color: #0056b3 !important;
-}
 
 .viewToggle {
   position: absolute;
@@ -193,34 +230,26 @@
 }
 
 .categoryList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0px;
 }
 
 .categoryButton {
-  display: flex;
+  display: flex;  
   align-items: center;
-  gap: 8px;
+  gap: 0px;
   padding: 8px 16px;
   background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: none; 
   cursor: pointer;
   font-size: 14px;
-  color: #333;
+  color: #3E74CB;
   transition: all 0.2s ease;
 }
 
 .categoryButton:hover {
   background-color: #f8f9fa;
-}
-
-.categoryButton.active {
-  background-color: #007bff;
-  color: white;
-  border-color: #007bff;
 }
 
 .categoryCount {
@@ -229,33 +258,35 @@
   justify-content: center;
   min-width: 20px;
   height: 20px;
-  padding: 0 6px;
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  font-size: 12px;
+  padding: 0 6px; 
+  font-size: 14px;
   font-weight: 500;
+  color: #8A8685;
 }
 
 .active .categoryCount {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-.categoryDropdown {
-  position: relative;
-}
+
 
 .categorySelect {
-  padding: 8px 32px 8px 16px;
   font-size: 14px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  color: #3E74CB;
+  border: none;
+  border-radius: 17px;
   background-color: white;
   cursor: pointer;
   appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  border: 1px solid #3E74CB;
+  border-radius: 17px;
+  background-image: url("../assets/DropDownBlue.png");
   background-repeat: no-repeat;
   background-position: right 8px center;
-  background-size: 16px;
+  background-size: 7px;
+  padding: 8px 30px 8px 16px;
+
+
 }
 
 .categorySelect:hover {
@@ -273,6 +304,8 @@
   gap: 8px;
   width: 100%;
   align-items: center;
+  position: relative;
+  padding-left: 30px;
 }
 
 .searchButton {
