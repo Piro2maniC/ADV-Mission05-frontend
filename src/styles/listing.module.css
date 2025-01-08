@@ -1,0 +1,175 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  font-size: 18px;
+  color: #666;
+}
+
+.imageSection {
+  position: relative;
+}
+
+.mainImage {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.detailsSection {
+  padding: 20px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #2c3e50;
+}
+
+.location {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.timeRemaining {
+  font-size: 16px;
+  font-weight: 600;
+  color: #e67e22;
+  margin-bottom: 24px;
+}
+
+.bidSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.currentBid, .reserveStatus {
+  text-align: center;
+}
+
+.currentBid h3, .reserveStatus h3 {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.status {
+  margin-top: 8px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.met {
+  background-color: #e6f4ea;
+  color: #1e7e34;
+}
+
+.notMet {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.bidForm {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.bidInput {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.bidButton {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.bidButton:hover {
+  background-color: #2980b9;
+}
+
+.buyNowButton {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 24px;
+  transition: background-color 0.2s ease;
+}
+
+.buyNowButton:hover {
+  background-color: #218838;
+}
+
+.description, .sellerInfo {
+  margin-top: 32px;
+}
+
+.description h3, .sellerInfo h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 12px;
+}
+
+.description p, .sellerInfo p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .bidSection {
+    grid-template-columns: 1fr;
+  }
+
+  .bidForm {
+    grid-template-columns: 1fr;
+  }
+}
