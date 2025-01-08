@@ -24,7 +24,7 @@ function Search() {
   const fetchItems = async (query = '') => {
     try {
       setLoading(true);
-      const response = await fetch(`http://localhost:4000/find${query ? `?search=${query}` : ''}`);
+      const response = await fetch(`http://localhost:5001/find${query ? `?search=${query}` : ''}`);
       if (!response.ok) {
         throw new Error('Failed to fetch auction items');
       }

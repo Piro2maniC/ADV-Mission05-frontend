@@ -9,7 +9,7 @@ export default function Reserve() {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/auctions');
+        const response = await axios.get('http://localhost:5001/api/auctions');
         const shuffledItems = [...response.data].sort(() => 0.5 - Math.random());
         const filteredItems = shuffledItems.filter(item => item.reserve_price === 1);
         setItems(filteredItems.slice(0, 4));

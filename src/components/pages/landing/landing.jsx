@@ -105,7 +105,7 @@ const Landing = () => {
        <Reserve></Reserve>
    <br></br>
    
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
     </div>
   );
 };

@@ -9,7 +9,7 @@ export default function CoolAuctions() {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/auctions');
+        const response = await axios.get('http://localhost:5001/api/auctions');
         const shuffledItems = [...response.data].sort(() => 0.5 - Math.random());
         const uniqueItems = [...new Set(shuffledItems.map(item => JSON.stringify(item)))].map(item => JSON.parse(item));
         setItems(uniqueItems.slice(0, 4));
@@ -40,13 +40,3 @@ export default function CoolAuctions() {
   );
 }
 
-
-// In your backend server file
-// app.get('/api/auctions', async (req, res) => {
-//   try {
-//       const items = await AuctionItems.find().limit(5); // Fetch 5 items
-//       res.json(items);
-//   } catch (err) {
-//       res.status(500).json({ error: 'Failed to fetch auction items' });
-//   }
-// });

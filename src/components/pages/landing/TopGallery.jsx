@@ -3,7 +3,7 @@ import styles from "./TopGallery.module.css";
 
 const TopGallery = () => {
   return (
-    <div className={styles.tiles}>
+    <div className={styles.coolTiles}>
       <div className={styles.tileOne}>
         <h1>Trending</h1>
           <p>Shop last minute Xmas gifts!</p>
