@@ -13,6 +13,49 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
+/* List view styles */
+.listView {
+  display: flex !important;
+  align-items: flex-start !important;
+  max-width: 100% !important;
+  height: 207px !important;
+}
+
+.listView .imageContainer {
+  flex-shrink: 0;
+  border-radius: 8px 0 0 8px;
+  margin-right: 16px;
+}
+
+.listView .content {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.listView .title {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.listView .priceInfo {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.listView .bidSection {
+  flex: 1;
+}
+
+.listView .watchlistIcon {
+  top: 8px;
+  right: 8px;
+}
+
 .watchlistIcon {
   position: absolute;
   top: 0px;
@@ -24,8 +67,8 @@
 }
 
 .imageContainer {
-  width: 100%;
-  height: 200px;
+  width: 256px;
+  height: 207px;
   position: relative;
   background-color: #f8f9fa;
   border-radius: 8px 8px 0 0;
@@ -99,28 +142,52 @@
   margin: 0;
 }
 
-.locationAndTime{
+.locationAndTime {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 4px;
 }
 
-.location{
+.location {
   color: #9D9996;
-  font-family: Inter;
   font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+  margin: 0;
 }
 
 .timeRemaining {
   color: #9D9996;
-  font-family: Inter;
   font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+  margin: 0;
+}
+
+.listView .locationTimeContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  color: #9D9996;
+  font-size: 12px;
+}
+
+.listView .shippingInfo {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+}
+
+.listView .shipping {
+  margin: 0;
+}
+
+.listView .title {
+  margin-top: 4px;
+  margin-bottom: 12px;
+}
+
+.separator {
+  color: #9D9996;
+  font-size: 12px;
 }
 
 .closingTime {
@@ -191,6 +258,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  text-wrap: nowrap;
 }
 
 .compareIcon {
@@ -228,15 +296,6 @@
   display: inline-block;
 }
 
-.reserveMet {
-  background-color: #e6f4ea;
-  color: #1e7e34;
-}
-
-.reserveNotMet {
-  background-color: #fff3cd;
-  color: #856404;
-}
 
 .currentBid {
   font-size: 16px;
@@ -273,4 +332,92 @@
   font-size: 16px;
   display: inline-block;
   color: black;
+}
+
+.locationTimeContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  color: #9D9996;
+  font-size: 12px;
+}
+
+.listView .compareAndBuyNow {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 8px;
+  align-items: flex-start;
+}
+
+.listView .compareButton {
+  height: 32px;
+}
+
+.reserveAndBid {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.listView .reserveAndBid {
+  margin-top: 8px;
+}
+
+.listView .currentBid {
+  font-size: 12px;
+  color: #666;
+}
+
+.listView .bidAmount {
+  font-weight: 600;
+  color: #000;
+}
+
+.listView .reserveStatus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.bidAmount {
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+}
+
+.reserveStatus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.reserveMet {
+  font-size: 12px;
+  color: #9D9996 ;
+}
+
+.reserveNotMet {
+font-size: 12px;
+color: #9D9996 ;
+}
+
+.listView .compareAndBuyNow {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 8px;
+  align-items: flex-start;
+}
+
+.listView .compareButton {
+  height: 32px;
 }

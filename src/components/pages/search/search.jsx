@@ -1,27 +1,42 @@
+/**
+ * Search Component
+ * Main component for the search page that displays auction items in either grid or list view.
+ * Includes functionality for searching, filtering by category, comparing items, and switching view modes.
+ */
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link, useLocation, useParams } from "react-router-dom";
 import Card from "./SearchCard";
 import styles from "../../../styles/Search.module.css";
 import searchIcon from "../../../assets/Vector.png";
+import GalleryIcon from "../../../assets/Gallery.png";
+import ListIcon from "../../../assets/List.png";
 
 function Search() {
-  const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [viewMode, setViewMode] = useState("grid");
-  const [compareItems, setCompareItems] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All Categories");
+  // State management for various features
+  const [items, setItems] = useState([]); // All auction items
+  const [loading, setLoading] = useState(true); // Loading state for API calls
+  const [error, setError] = useState(null); // Error state for API calls
+  const [viewMode, setViewMode] = useState("grid"); // Toggle between grid and list view
+  const [compareItems, setCompareItems] = useState([]); // Items selected for comparison
+  const [searchQuery, setSearchQuery] = useState(""); // Current search query
+  const [selectedCategory, setSelectedCategory] = useState("All Categories"); // Selected category filter
+  
+  // Hooks for navigation and routing
   const navigate = useNavigate();
   const location = useLocation();
   const { keyword } = useParams();
 
+  // Set search query from URL parameters
   useEffect(() => {
     if (keyword) {
       setSearchQuery(keyword);
     }
   }, [keyword]);
 
+  /**
+   * Fetches auction items from the API
+   * @param {string} query - Optional search query to filter items
+   */
   const fetchItems = async (query = "") => {
     try {
       setLoading(true);
@@ -40,10 +55,14 @@ function Search() {
     }
   };
 
+  // Initial fetch of items on component mount
   useEffect(() => {
     fetchItems();
   }, []);
 
+  /**
+   * Event Handlers for Search Functionality
+   */
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
@@ -65,10 +84,16 @@ function Search() {
     }
   };
 
+  /**
+   * Navigation and URL Management
+   */
   const clearSearchFromUrl = () => {
     navigate("/search");
   };
 
+  /**
+   * Category Management
+   */
   const handleCategoryChange = (e) => {
     setSelectedCategory(e.target.value);
     clearSearchFromUrl();
@@ -79,11 +104,17 @@ function Search() {
     clearSearchFromUrl();
   };
 
+  /**
+   * View Mode Management
+   */
   const handleViewModeChange = (mode) => {
     setViewMode(mode);
     clearSearchFromUrl();
   };
 
+  /**
+   * Search Reset
+   */
   const handleClearSearch = () => {
     setSearchQuery("");
     setSelectedCategory("All Categories");
@@ -91,21 +122,19 @@ function Search() {
     fetchItems(""); // Fetch all items when clearing search
   };
 
+  /**
+   * Compare Functionality
+   * Manages the addition and removal of items for comparison
+   * Limited to 2 items maximum
+   */
   const handleCompare = (item) => {
-    console.log("handleCompare called with item:", item);
     setCompareItems((prev) => {
       const exists = prev.some((i) => i._id === item._id);
-      console.log("Item exists in compare list:", exists);
-      console.log("Current compare items:", prev);
 
       if (exists) {
-        const newItems = prev.filter((i) => i._id !== item._id);
-        console.log("Removing item, new list:", newItems);
-        return newItems;
+        return prev.filter((i) => i._id !== item._id);
       } else if (prev.length < 2) {
-        const newItems = [...prev, item];
-        console.log("Adding item, new list:", newItems);
-        return newItems;
+        return [...prev, item];
       } else {
         alert("You can only compare up to 2 items");
         return prev;
@@ -123,14 +152,17 @@ function Search() {
     }
   };
 
+  // Loading and error states
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
+  // Get unique categories from items
   const categories = [
     "All Categories",
     ...new Set(items.map((item) => item.category)),
   ].filter(Boolean);
 
+  // Filter items based on search query and selected category
   const filteredItems = items.filter((item) => {
     const matchesSearch =
       searchQuery === "" ||
@@ -144,8 +176,20 @@ function Search() {
     return matchesCategory && matchesSearch;
   });
 
+  /**
+   * Extracts just the city name from a location string
+   * @param {string} location - Location string in format "City, Country"
+   * @returns {string} - Just the city name
+   */
+  const getCity = (location) => {
+    if (!location) return '';
+    const parts = location.split(',');
+    return parts[0].trim();
+  };
+
   return (
     <div className={styles.searchContainer}>
+      {/* Breadcrumb Navigation */}
       <div className={styles.searchHeader}>
         <div className={styles.breadcrumb}>
           <Link to="/" className={styles.breadcrumbLink}>
@@ -154,7 +198,11 @@ function Search() {
           <span className={styles.breadcrumbSeparator}>/</span>
           <span>{selectedCategory}</span>
         </div>
+
+        {/* Page Title */}
         <h1 className={styles.pageTitle}>{selectedCategory}</h1>
+
+        {/* Search Bar */}
         <div className={styles.searchBar}>
           <form onSubmit={handleSearchSubmit} className={styles.searchForm}>
             <div className={styles.searchInputContainer}>
@@ -187,6 +235,8 @@ function Search() {
             </button>
           </form>
         </div>
+
+        {/* Filter Bar */}
         <div className={styles.filterBar}>
           <button className={styles.refineButton} onClick={clearSearchFromUrl}>
             Refine
@@ -225,6 +275,7 @@ function Search() {
         </div>
       </div>
 
+      {/* Category List */}
       <div className={styles.categoryList}>
         {categories.map((category) => (
           <button
@@ -246,43 +297,64 @@ function Search() {
         ))}
       </div>
 
-      <div className={styles.viewToggle}>
-        <button
-          className={`${styles.toggleButton} ${
-            viewMode === "grid" ? styles.active : ""
-          }`}
-          onClick={() => handleViewModeChange("grid")}
-        >
-          Grid
-        </button>
-        <button
-          className={`${styles.toggleButton} ${
-            viewMode === "list" ? styles.active : ""
-          }`}
-          onClick={() => handleViewModeChange("list")}
-        >
-          List
-        </button>
+      {/* Display Settings */}
+      <div className={styles.displaySettingsContainer}>
+        <div className={styles.results}>
+          Showing {filteredItems.length} results for '{" "}
+
+          <span className={styles.categoryName}>{selectedCategory}</span>
+        </div>
+        <div className={styles.rightContent}>
+          <div className={styles.sort}>
+            Sort: Best Match{" "}
+          </div>
+
+          {/* View Mode Toggle */}
+          <div className={styles.viewToggle}>
+            <button
+              className={`${styles.toggleButtonList} ${
+                viewMode === "list" ? styles.active : ""
+              }`}
+              onClick={() => handleViewModeChange("list")}
+            >
+              <img src={ListIcon} alt="" className={styles.listIcon} /> List
+            </button>
+            <button
+              className={`${styles.toggleButtonGallery} ${
+                viewMode === "grid" ? styles.active : ""
+              }`}
+              onClick={() => handleViewModeChange("grid")}
+            >
+              <img src={GalleryIcon} alt="" className={styles.galleryIcon} />{" "}
+              Gallery
+            </button>
+          </div>
+        </div>
       </div>
 
+      {/* Search Results Grid/List */}
       <div
         className={
           viewMode === "grid" ? styles.gridContainer : styles.listContainer
         }
       >
+        
         {filteredItems.map((item) => (
           <Card
             key={item._id}
             {...item}
+            location={getCity(item.location)}
             onCompare={handleCompare}
             isCompareDisabled={
               compareItems.length === 2 &&
               !compareItems.some((i) => i._id === item._id)
             }
+            viewMode={viewMode}
           />
         ))}
       </div>
 
+      {/* Compare Button */}
       <button
         className={styles.compareButton}
         onClick={handleCompareClick}

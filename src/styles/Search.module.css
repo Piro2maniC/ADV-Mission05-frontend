@@ -1,5 +1,5 @@
 .searchContainer {
-  padding: 20px;
+
   position: relative;
   font-family: Inter;
   
@@ -145,30 +145,6 @@
 
 
 
-.viewToggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  display: flex;
-  gap: 10px;
-  background: #f5f5f5;
-  padding: 8px;
-  border-radius: 8px;
-}
-
-.toggleButton {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  background: transparent;
-  transition: background-color 0.3s;
-}
-
-.toggleButton.active {
-  background: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
 
 .gridContainer {
   display: grid;
@@ -193,22 +169,23 @@
 }
 
 .compareButton {
+  width: 100px;
+  height: 34px;
   position: fixed;
   bottom: 20px;
-  right: 20px;
-  background: #0066CC;
+  right: 200px;
+  align-items: center;
+  padding-left: 0px; 
+  background: #3E74CB;
   color: white;
   border: none;
-  border-radius: 24px;
-  padding: 12px 24px;
+  border-radius: 24px;  
   font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  font-weight: 500; 
+  cursor: pointer;  
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
+  z-index: 1000; 
+ 
 }
 
 .compareButton:hover {
@@ -217,7 +194,8 @@
 
 .compareCount {
   background: white;
-  color: #0066CC;
+  color: #3E74CB;
+  border: 1px solid #3E74CB;
   width: 24px;
   height: 24px;
   border-radius: 50%;
@@ -225,8 +203,10 @@
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  font-size: 12px;
-  margin-right: 4px;
+  font-size: 12px; 
+  left: -10px;
+  top: -15px;
+  position: relative;
 }
 
 .categoryList {
@@ -320,4 +300,83 @@
 
 .searchButton:hover {
   background-color: #0052a3;
+}
+
+.displaySettingsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 2rem;
+}
+.rightContent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.results {
+  font-size: 20px;
+  font-weight: 700;  
+}
+
+.sort {
+  Width: 240px;
+Height: 48px;
+border-radius:4px;
+background-image: url("../assets/bxs_up-arrowBlue.png");
+background-repeat: no-repeat;
+background-position: right 1.5rem center;
+Border:solid 0.5px #9D9996;
+color: #8A8685;
+font-size: 14px;
+font-weight: 500;
+padding: 16px 30px 8px 16px;
+}
+
+.viewToggle { 
+  Width: 200px;
+  Height: 48px;  
+  display: flex;
+  background: #f5f5f5;
+  border: 0.5px solid #9D9996; 
+  border-radius: 4px;
+
+}
+
+
+
+.toggleButtonList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-bottom-left-radius: 4px; 
+  border-top-left-radius: 4px;
+border: none;
+Width: 100px;
+Height: 46px; 
+}
+
+.toggleButtonGallery {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-bottom-right-radius: 4px; 
+  border-top-right-radius: 4px;
+  border:none;
+  Width: 100px;
+  Height: 46px; 
+  ;
+}
+
+.toggleButtonList.active {   
+  border: 2px solid #9D9996;
+}
+
+.toggleButtonGallery.active {  
+  border: 2px solid #9D9996;
 }
