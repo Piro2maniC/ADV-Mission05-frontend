@@ -1,70 +1,142 @@
-# Getting Started with Create React App
+# Trade Me Clone Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern React-based frontend application for an online auction platform, inspired by Trade Me. This application provides a rich user interface for browsing, searching, and comparing auction items.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Advanced Search Functionality**
+  - Real-time search with keyword filtering
+  - Category-based filtering
+  - Location-based filtering
+  - Dynamic result updates
 
-### `npm start`
+- **Dual View Modes**
+  - Grid view for visual browsing
+  - List view for detailed information
+  - Easy toggle between views
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Item Comparison**
+  - Compare up to 2 items side by side
+  - Quick add/remove from comparison
+  - Detailed comparison view
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Item Cards**
+  - Image preview with loading states
+  - Reserve status indication
+  - Current bid display
+  - Buy Now option
+  - Shipping information
+  - Watchlist functionality
+  - Time remaining countdown
 
-### `npm test`
+## Technology Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Framework**: React.js
+- **Routing**: React Router v6
+- **Styling**: CSS Modules
+- **State Management**: React Hooks
+- **HTTP Client**: Fetch API
+- **Asset Management**: Webpack
+- **Development Server**: Vite
 
-### `npm run build`
+## Project Structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+src/
+├── assets/           # Static assets (images, icons)
+├── components/       # React components
+│   ├── pages/       # Page-level components
+│   │   ├── Search/  # Search page components
+│   │   └── ...
+│   └── shared/      # Shared/reusable components
+├── styles/          # CSS modules
+└── App.jsx          # Root component
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Prerequisites**
+   - Node.js (v14 or higher)
+   - npm or yarn
 
-### `npm run eject`
+2. **Installation**
+   ```bash
+   # Clone the repository
+   git clone https://github.com/Piro2maniC/ADV-Mission05-frontend.git
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   # Navigate to project directory
+   cd ADV-Mission05-frontend
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   # Install dependencies
+   npm install
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. **Development**
+   ```bash
+   # Start development server
+   npm run dev
+   ```
+   The application will be available at `http://localhost:5173`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. **Building for Production**
+   ```bash
+   # Create production build
+   npm run build
+   ```
 
-## Learn More
+## Component Documentation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Search Component
+The main search page component that handles:
+- Search query management
+- Category filtering
+- View mode switching
+- Item comparison management
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### SearchCard Component
+Individual item card component featuring:
+- Image display with loading states
+- Reserve status indication
+- Current bid display
+- Compare functionality
+- Buy Now option
+- Shipping information
 
-### Code Splitting
+## Styling
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The project uses CSS Modules for styling, providing:
+- Scoped styling per component
+- Reusable style compositions
+- Dynamic class application
+- Responsive design
 
-### Analyzing the Bundle Size
+Key style files:
+- `search.module.css`: Styles for the search page layout
+- `SearchCard.module.css`: Styles for individual item cards
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## API Integration
 
-### Making a Progressive Web App
+The frontend communicates with the backend API for:
+- Fetching auction items
+- Searching and filtering
+- Item comparison
+- User interactions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Browser Support
 
-### Advanced Configuration
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Contributing
 
-### Deployment
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## License
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License - see the LICENSE file for details
